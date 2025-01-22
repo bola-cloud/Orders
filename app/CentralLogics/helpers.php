@@ -3517,15 +3517,15 @@ class Helpers
         try {
             if ($data && $type == 's3' && Storage::disk('s3')->exists($path .'/'. $data)) {
                 return Storage::disk('s3')->url($path .'/'. $data);
-//                $awsUrl = config('filesystems.disks.s3.url');
-//                $awsBucket = config('filesystems.disks.s3.bucket');
-//                return rtrim($awsUrl, '/') . '/' . ltrim($awsBucket . '/' . $path . '/' . $data, '/');
+            //    $awsUrl = config('filesystems.disks.s3.url');
+            //    $awsBucket = config('filesystems.disks.s3.bucket');
+            //    return rtrim($awsUrl, '/') . '/' . ltrim($awsBucket . '/' . $path . '/' . $data, '/');
             }
         } catch (\Exception $e){
         }
 
-        if ($data && Storage::disk('public')->exists($path .'/'. $data)) {
-            return asset('storage/app/public') . '/' . $path . '/' . $data;
+        if ($data && Storage::disk('public')->exists("$path/$data")) {
+            return asset('storage') . "/$path/$data"; // Correct URL for public disk
         }
 
         if (request()->is('api/*')) {
