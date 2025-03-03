@@ -1,6 +1,4 @@
-<?php
-
-return array (
+<?php return array (
   'attributes' => 'Attributes',
   'add_new_attribute' => 'Add new attribute',
   'default' => 'Default',
@@ -5965,4 +5963,6 @@ Smartly or Earn. ',
   'Pagination Navigation' => 'Pagination Navigation',
   '+data[count].name +' => '+البيانات [count] .name +',
   'translating' => 'Translating',
+  'subscription_exist' => 'Subscription exist',
+  'البقالة' => 'البقالة',
 );
