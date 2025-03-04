@@ -191,7 +191,7 @@
                                         </td>
                                         <td>
                                             <img
-                                            src="{{ $review->reviewer_image_full_url ?? asset('/assets/admin/img/upload-3.png')}}" 
+                                            src="{{ $review->reviewer_image_full_url ?? asset('/public/assets/admin/img/upload-3.png')}}"
                                             data-onerror-image="{{asset('/assets/admin/img/upload-3.png')}}" class="__size-105 onerror-image" alt="">
                                         </td>
 
@@ -200,8 +200,8 @@
                                                 <input type="checkbox"
                                                        data-id="status-{{ $review->id }}"
                                                        data-type="status"
-                                                       data-image-on="{{ asset('/assets/admin/img/modal/this-criteria-on.png') }}"
-                                                       data-image-off="{{ asset('/assets/admin/img/modal/this-criteria-off.png') }}"
+                                                       data-image-on="{{ asset('/public/assets/admin/img/modal/this-criteria-on.png') }}"
+                                                       data-image-off="{{ asset('/public/assets/admin/img/modal/this-criteria-off.png') }}"
                                                        data-title-on="{{ translate('by_turning_on_this_review') }} <strong>{{ translate('this_review') }}</strong>"
                                                        data-title-off="{{ translate('by_turning_off_this_review') }} <strong>{{ translate('this_review') }}</strong>"
                                                        data-text-on="<p>{{ translate('this_section_will_be_enabled_you_can_see_this_section_on_your_landing_page') }}</p>"

@@ -104,7 +104,7 @@
                                         <div class="img">
                                             <img
 
-                                            src="{{ $criteria['image_full_url'] ?? asset('/assets/admin/img/aspect-1.png') }}"  data-onerror-image="{{asset('/assets/admin/img/aspect-1.png')}}" alt="" class="img__aspect-1 min-w-187px max-w-187px onerror-image">
+                                            src="{{ $criteria['image_full_url'] ?? asset('/public/assets/admin/img/aspect-1.png') }}"  data-onerror-image="{{asset('/assets/admin/img/aspect-1.png')}}" alt="" class="img__aspect-1 min-w-187px max-w-187px onerror-image">
                                         </div>
                                           <input type="file"  name="image" hidden>
                                             @if (isset($criteria['image']))

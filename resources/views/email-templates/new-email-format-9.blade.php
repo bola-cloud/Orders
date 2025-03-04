@@ -217,7 +217,7 @@ width: 24px;
                                 <td class="p-10">
                                     <span class="d-block text-center">
                                         <img class="mb-2 mail-img-2"
-                                        src="{{ $data['image_full_url'] ?? asset('/assets/admin/img/blank2.png') }}"
+                                        src="{{ $data['image_full_url'] ?? asset('/public/assets/admin/img/blank2.png') }}"
                                         alt="">
                                         <h3 class="mb-3 mt-0">{{ translate('Order_Info') }}</h3>
                                     </span>

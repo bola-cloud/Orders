@@ -122,7 +122,38 @@
                         <!-- End forget password -->
                     </div>
 
+                    {{-- @php($recaptcha = \App\CentralLogics\Helpers::get_business_settings('recaptcha'))
+                    @if(isset($recaptcha) && $recaptcha['status'] == 1)
+                        <input type="hidden" name="g-recaptcha-response" id="g-recaptcha-response">
 
+                        <input type="hidden" name="set_default_captcha" id="set_default_captcha_value" value="0" >
+                        <div class="row p-2 d-none" id="reload-captcha">
+                            <div class="col-6 pr-0">
+                                <input type="text" class="form-control form-control-lg border-0" name="custome_recaptcha"
+                                        id="custome_recaptcha" required placeholder="{{translate('Enter recaptcha value')}}" autocomplete="off" value="{{env('APP_MODE')=='dev'? session('six_captcha'):''}}">
+                            </div>
+                            <div class="col-6 bg-white rounded d-flex">
+                                <img src="<?php echo $custome_recaptcha->inline(); ?>" class="rounded w-100" />
+                                <div class="p-3 pr-0 capcha-spin reloadCaptcha">
+                                    <i class="tio-cached"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                        @else
+                        <div class="row p-2" id="reload-captcha">
+                            <div class="col-6 pr-0">
+                                <input type="text" class="form-control form-control-lg border-0" name="custome_recaptcha"
+                                        id="custome_recaptcha" required placeholder="{{translate('Enter recaptcha value')}}" autocomplete="off" value="{{env('APP_MODE')=='dev'? session('six_captcha'):''}}">
+                            </div>
+                            <div class="col-6 bg-white rounded d-flex">
+                                <img src="<?php echo $custome_recaptcha->inline(); ?>" class="rounded w-100" />
+                                <div class="p-3 pr-0 capcha-spin reloadCaptcha">
+                                    <i class="tio-cached"></i>
+                                </div>
+                            </div>
+                        </div>
+                    @endif --}}
 
                     <button type="submit" class="btn btn-lg btn-block btn--primary mt-xxl-3" id="signInBtn">{{translate('messages.login')}}</button>
                 </form>

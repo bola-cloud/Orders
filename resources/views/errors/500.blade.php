@@ -1,4 +1,4 @@
-{{-- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <!-- Required Meta Tags Always Come First -->
@@ -62,4 +62,4 @@
 <script src="{{asset('assets/admin')}}/js/theme.min.js"></script>
 </body>
 
-</html> --}}
+</html>

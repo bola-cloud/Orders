@@ -221,13 +221,13 @@
                                             </div>
                                         </td>
                                         <td>
-                                            <img   src="{{ $review?->reviewer_image_full_url ?? asset('/assets/admin/img/upload-3.png') }}"
+                                            <img   src="{{ $review?->reviewer_image_full_url ?? asset('/public/assets/admin/img/upload-3.png') }}"
 
                                             data-onerror-image="{{asset('/assets/admin/img/upload-3.png')}}" class="__size-105 onerror-image" alt="">
                                         </td>
                                         <td>
                                             <img
-                                            src="{{ $review?->company_image_full_url ?? asset('/assets/admin/img/upload-3.png') }}"
+                                            src="{{ $review?->company_image_full_url ?? asset('/public/assets/admin/img/upload-3.png') }}"
 
                                             data-onerror-image="{{asset('/assets/admin/img/upload-3.png')}}" class="__size-105 onerror-image" alt="">
                                         </td>
@@ -236,8 +236,8 @@
                                                 <input type="checkbox"
                                                        data-id="status-{{$review->id}}"
                                                        data-type="status"
-                                                       data-image-on="{{ asset('/assets/admin/img/modal/testimonial-on.png') }}"
-                                                       data-image-off="{{ asset('/assets/admin/img/modal/testimonial-off.png') }}"
+                                                       data-image-on="{{ asset('/public/assets/admin/img/modal/testimonial-on.png') }}"
+                                                       data-image-off="{{ asset('/public/assets/admin/img/modal/testimonial-off.png') }}"
                                                        data-title-on="{{ translate('By Turning ON ') }} <strong>{{ translate('This review') }}"
                                                        data-title-off="{{ translate('By Turning OFF ') }} <strong>{{ translate('This review') }}"
                                                        data-text-on="<p>{{ translate('This section will be enabled. You can see this section on your landing page.') }}</p>"

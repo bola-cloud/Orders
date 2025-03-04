@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Vendor;
 
-use DateTime;
 use Carbon\Carbon;
 use App\Models\Tag;
 use App\Models\Item;
@@ -14,12 +13,10 @@ use App\Models\Nutrition;
 use App\Scopes\StoreScope;
 use App\Models\GenericName;
 use App\Models\TempProduct;
-use App\Models\Translation;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Models\FlashSaleItem;
 use App\CentralLogics\Helpers;
-use App\Models\BusinessSetting;
 use App\Models\CommonCondition;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\DB;
@@ -28,7 +25,6 @@ use App\Models\PharmacyItemDetails;
 use App\Http\Controllers\Controller;
 use App\Models\EcommerceItemDetails;
 use Brian2694\Toastr\Facades\Toastr;
-use Illuminate\Support\Facades\File;
 use Rap2hpoutre\FastExcel\FastExcel;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
@@ -259,7 +255,7 @@ class ItemController extends Controller
         $food->category_id = $request->sub_category_id?$request->sub_category_id:$request->category_id;
         $food->category_ids = json_encode($category);
         $food->description = $request->description[array_search('default', $request->lang)];
-
+        $food->unit_id = $request?->unit;
         $choice_options = [];
         if ($request->has('choice')) {
             foreach ($request->choice_no as $key => $no) {
@@ -582,7 +578,7 @@ class ItemController extends Controller
 
         $p = Item::find($id);
         $p->name = $request->name[array_search('default', $request->lang)];
-
+        $p->unit_id = $request?->unit;
         $category = [];
         if ($request->category_id != null) {
             array_push($category, [
@@ -1037,7 +1033,10 @@ class ItemController extends Controller
                         Toastr::error(translate('messages.Discount_must_be_greater_then_0').' '.$collection['Id']);
                         return back();
                     }
-
+                    if (data_get($collection,'Image') != "" &&  strlen(data_get($collection,'Image')) > 30 ) {
+                        Toastr::error(translate('messages.Image_name_must_be_in_30_char._on_id') . ' ' . $collection['Id']);
+                        return back();
+                    }
                     try{
                         $t1= Carbon::parse($collection['AvailableTimeStarts']);
                         $t2= Carbon::parse($collection['AvailableTimeEnds']) ;
@@ -1127,7 +1126,7 @@ class ItemController extends Controller
                 }
             }catch(\Exception $e){
                 info(["line___{$e->getLine()}",$e->getMessage()]);
-                Toastr::error(translate('messages.failed_to_import_data'));
+                Toastr::error($e->getMessage());
                 return back();
             }
             try{
@@ -1199,7 +1198,7 @@ class ItemController extends Controller
             {
                 DB::rollBack();
                 info(["line___{$e->getLine()}",$e->getMessage()]);
-                Toastr::error(translate('messages.failed_to_import_data'));
+                Toastr::error($e->getMessage());
                 return back();
             }
 
@@ -1227,7 +1226,10 @@ class ItemController extends Controller
                     Toastr::error(translate('messages.Discount_must_be_less_then_100').' '.$collection['Id']);
                     return back();
                 }
-
+                if (data_get($collection,'Image') != "" &&  strlen(data_get($collection,'Image')) > 30 ) {
+                    Toastr::error(translate('messages.Image_name_must_be_in_30_char._on_id') . ' ' . $collection['Id']);
+                    return back();
+                }
                 try{
                     $t1= Carbon::parse($collection['AvailableTimeStarts']);
                     $t2= Carbon::parse($collection['AvailableTimeEnds']) ;
@@ -1318,7 +1320,7 @@ class ItemController extends Controller
             }
         }catch(\Exception $e){
             info(["line___{$e->getLine()}",$e->getMessage()]);
-            Toastr::error(translate('messages.failed_to_import_data'));
+            Toastr::error($e->getMessage());
             return back();
         }
         try{
@@ -1365,7 +1367,7 @@ class ItemController extends Controller
         {
             DB::rollBack();
             info(["line___{$e->getLine()}",$e->getMessage()]);
-            Toastr::error(translate('messages.failed_to_import_data'));
+            Toastr::error($e->getMessage());
             return back();
         }
 

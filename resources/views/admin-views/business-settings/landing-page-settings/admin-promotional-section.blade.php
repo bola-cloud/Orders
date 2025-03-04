@@ -165,7 +165,7 @@
                                     </td>
                                     <td>
                                         <img
-                                        src="{{ $banner->image_full_url ?? asset('/assets/admin/img/upload-3.png') }}"
+                                        src="{{ $banner->image_full_url ?? asset('/public/assets/admin/img/upload-3.png') }}"
                                         data-onerror-image="{{asset('/assets/admin/img/upload-3.png')}}" class="__size-105 onerror-image" alt="">
                                     </td>
                                     <td>
@@ -173,8 +173,8 @@
                                             <input type="checkbox"
                                                    data-id="status-{{$banner->id}}"
                                                    data-type="status"
-                                                   data-image-on="{{ asset('/assets/admin/img/modal/promotional-on.png') }}"
-                                                   data-image-off="{{ asset('/assets/admin/img/modal/promotional-off.png') }}"
+                                                   data-image-on="{{ asset('/public/assets/admin/img/modal/promotional-on.png') }}"
+                                                   data-image-off="{{ asset('/public/assets/admin/img/modal/promotional-off.png') }}"
                                                    data-title-on="{{ translate('By Turning ON Promotional Banner Section') }}"
                                                    data-title-off="{{ translate('By Turning OFF Promotional Banner Section') }}"
                                                    data-text-on="<p>{{ translate('Promotional banner will be enabled. You will be able to see promotional activity') }}</p>"

@@ -4,9 +4,9 @@ $company_name = App\Models\BusinessSetting::where('key', 'business_name')->first
 <table class="email-template-table-style">
     <tr>
         <td class="email-template-table-td-style">
-            <img class="mail-img-2 onerror-image" data-onerror-image="{{ asset('/assets/admin/img/blank3.png') }}"
+            <img class="mail-img-2 onerror-image" data-onerror-image="{{ asset('/public/assets/admin/img/blank3.png') }}"
 
-            src="{{ $data['icon_full_url'] ?? asset('/assets/admin/img/blank3.png') }}"
+            src="{{ $data['icon_full_url'] ?? asset('/public/assets/admin/img/blank3.png') }}"
 
 
             id="iconViewer" alt="">

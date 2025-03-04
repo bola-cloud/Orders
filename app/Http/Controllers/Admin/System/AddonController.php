@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin\System;
 
+use App\Models\Module;
 use Illuminate\Http\Request;
 use App\CentralLogics\Helpers;
 use Illuminate\Http\JsonResponse;
@@ -13,6 +14,7 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Contracts\View\Factory;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Contracts\Foundation\Application;
@@ -61,6 +63,10 @@ class AddonController extends Controller
 
     public function publish(Request $request): JsonResponse|int
     {
+        if (env('APP_MODE') == 'demo') {
+            Toastr::info(translate('messages.update_option_is_disable_for_demo'));
+            return back();
+        }
         $full_data = include($request['path'] . '/Addon/info.php');
         $path = $request['path'];
         $addon_name = $full_data['name'];
@@ -74,6 +80,10 @@ class AddonController extends Controller
         $str = "<?php return " . var_export($full_data, true) . ";";
         file_put_contents(base_path($request['path'] . '/Addon/info.php'), $str);
 
+        if ($full_data['name'] == 'Rental') {
+            $this->rentalPublish($full_data['is_published']);
+        }
+
         return response()->json([
             'status' => 'success',
             'message'=> 'status_updated_successfully'
@@ -82,6 +92,10 @@ class AddonController extends Controller
 
     public function activation(Request $request): Redirector|RedirectResponse|Application
     {
+        if (env('APP_MODE') == 'demo') {
+            Toastr::info(translate('messages.update_option_is_disable_for_demo'));
+            return back();
+        }
         $remove = ["http://", "https://", "www."];
         $url = str_replace($remove, "", url('/'));
         $full_data = include($request['path'] . '/Addon/info.php');
@@ -104,6 +118,7 @@ class AddonController extends Controller
             $full_data['purchase_code'] = $request['purchase_code'];
             $str = "<?php return " . var_export($full_data, true) . ";";
             file_put_contents(base_path($request['path'] . '/Addon/info.php'), $str);
+            $this->rentalPublish($full_data['is_published']);
 
             Toastr::success(translate('activated_successfully'));
             return back();
@@ -162,6 +177,10 @@ class AddonController extends Controller
     }
 
     public function delete_theme(Request $request){
+        if (env('APP_MODE') == 'demo') {
+            Toastr::info(translate('messages.update_option_is_disable_for_demo'));
+            return back();
+        }
         $path = $request->path;
 
         $full_path = base_path($path);
@@ -181,27 +200,9 @@ class AddonController extends Controller
     }
 
     //helper functions
-    // function getDirectories(string $path): array
-    // {
-    //     $directories = [];
-    //     $items = scandir($path);
-    //     foreach ($items as $item) {
-    //         if ($item == '..' || $item == '.')
-    //             continue;
-    //         if (is_dir($path . '/' . $item))
-    //             $directories[] = $item;
-    //     }
-    //     return $directories;
-    // }
     function getDirectories(string $path): array
     {
         $directories = [];
-
-        // Check if the path exists and is a directory
-        if (!is_dir($path)) {
-            return $directories; // Return an empty array if the directory doesn't exist
-        }
-
         $items = scandir($path);
         foreach ($items as $item) {
             if ($item == '..' || $item == '.')
@@ -212,4 +213,25 @@ class AddonController extends Controller
         return $directories;
     }
 
+    private function rentalPublish(int|bool $is_published): bool
+    {
+        try {
+            $module = Module::firstOrNew(
+                ['module_type' => 'rental'],
+                ['module_name' => 'Rental']
+            );
+
+            if ($is_published) {
+                Artisan::call('migrate', ['--force' => true]);
+                $module->status = 1;
+            } else {
+                $module->status = 0;
+            }
+
+            $module->save();
+            return true;
+        } catch (\Exception $e) {
+            return false;
+        }
+    }
 }

@@ -12,6 +12,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\DB;
 use Laravel\Passport\HasApiTokens;
+use Modules\Rental\Entities\Trips;
 
 class User extends Authenticatable
 {
@@ -64,9 +65,23 @@ class User extends Authenticatable
         return Helpers::get_full_url('profile',$value,'public');
     }
 
+    public function getFullNameAttribute(): string
+    {
+        return $this->f_name . ' ' . $this->l_name;
+    }
+
+    public function scopeOfStatus($query, $status): void
+    {
+        $query->where('status', '=', $status);
+    }
+
     public function orders()
     {
         return $this->hasMany(Order::class)->where('is_guest', 0);
+    }
+    public function trips()
+    {
+        return $this->hasMany(Trips::class)->where('is_guest', 0);
     }
 
     public function addresses(){

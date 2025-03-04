@@ -179,7 +179,7 @@
                                 </div>
                                 <div class="custom-file mt-3">
                                     <input type="file" name="image" id="customFileEg1" class="custom-file-input"
-                                            accept=".jpg, .png, .jpeg, .webp , .gif, .bmp, .tif, .tiff|image/*">
+                                            accept=".webp, .jpg, .png, .jpeg, .webp , .gif, .bmp, .tif, .tiff|image/*">
                                     <label class="custom-file-label" for="customFileEg1">{{translate('messages.choose_file')}}</label>
                                 </div>
                             </div>
@@ -203,7 +203,7 @@
                                         <label class="input-label" for="exampleFormControlSelect1">{{translate('messages.category')}}<span
                                                 class="input-label-secondary">*</span></label>
                                         <select name="category_id" id="category-id" class="form-control js-select2-custom get-request"
-                                        data-url="{{url('/')}}/store-panel/item/get-categories?parent_id=" data-id="sub-categories"
+                                        data-url="{{url('/')}}/vendor-panel/item/get-categories?parent_id=" data-id="sub-categories"
                                                >
                                             @foreach($categories as $category)
                                                 <option
@@ -220,7 +220,7 @@
                                         <select name="sub_category_id" id="sub-categories"
                                                 data-id="{{count($product_category)>=2?$product_category[1]->id:''}}"
                                                 class="form-control js-select2-custom get-request"
-                                                data-url="{{url('/')}}/store-panel/item/get-categories?parent_id=" data-id="sub-sub-categories">
+                                                data-url="{{url('/')}}/vendor-panel/item/get-categories?parent_id=" data-id="sub-sub-categories">
 
                                         </select>
                                     </div>
@@ -470,7 +470,7 @@
                                 @if (!isset($product->food_variations) || count(json_decode($product->food_variations,true))<1)
                                 <div id="empty-variation">
                                     <div class="text-center">
-                                        <img src="{{ asset('/assets/admin/img/variation.png') }}" alt="">
+                                        <img src="{{ asset('/public/assets/admin/img/variation.png') }}" alt="">
                                         <div>{{ translate('No variation added') }}</div>
                                     </div>
                                 </div>
@@ -760,8 +760,8 @@
                 let category = $("#category-id").val();
                 let sub_category = '{{count($product_category)>=2?$product_category[1]->id:''}}';
                 let sub_sub_category ='{{count($product_category)>=3?$product_category[2]->id:''}}';
-                getRequest('{{url('/')}}/store-panel/item/get-categories?parent_id=' + category + '&&sub_category=' + sub_category, 'sub-categories');
-                getRequest('{{url('/')}}/store-panel/item/get-categories?parent_id=' + sub_category + '&&sub_category=' + sub_sub_category, 'sub-sub-categories');
+                getRequest('{{url('/')}}/vendor-panel/item/get-categories?parent_id=' + category + '&&sub_category=' + sub_category, 'sub-categories');
+                getRequest('{{url('/')}}/vendor-panel/item/get-categories?parent_id=' + sub_category + '&&sub_category=' + sub_sub_category, 'sub-sub-categories');
             }, 1000)
         });
 

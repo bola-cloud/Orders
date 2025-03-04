@@ -528,7 +528,7 @@
                             <label class="custom-control-label"
                                    for="orderStatus8">{{translate('messages.canceled')}}</label>
                         </div>
-                     
+
                     @endif
 
                     <hr class="my-4">

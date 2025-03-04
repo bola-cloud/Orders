@@ -98,7 +98,7 @@ width: 24px;
         <tr>
             <td style="padding:30px 30px 0">
                 <img class="mail-img-2"
-                src="{{ $data['icon_full_url'] ?? asset('/assets/admin/img/blank3.png') }}"
+                src="{{ $data['icon_full_url'] ?? asset('/public/assets/admin/img/blank3.png') }}"
                 id="iconViewer" alt="">
                 <h3 style="font-size:17px;font-weight:500" class="mt-2" id="mail-title">{{ $title?? translate('Main_Title_or_Subject_of_the_Mail') }}</h3>
 
@@ -130,7 +130,7 @@ width: 24px;
 
                 @php($store_logo = \App\Models\BusinessSetting::where(['key' => 'logo'])->first())
                 <img style="width:100px;display:block;margin:10px auto" src="{{ $data?->logo ? $data->logo_full_url : \App\CentralLogics\Helpers::get_full_url('business',$store_logo?->value,$store_logo?->storage[0]?->value ?? 'public', 'favicon') }}" alt="public/img">
-               
+
                 <span class="privacy">
                     @php($landing_data =\App\Models\DataSetting::where('type', 'admin_landing_page')->whereIn('key', ['shipping_policy_status','refund_policy_status','cancellation_policy_status'])->pluck('value','key')->toArray())
                     <a href="{{ route('privacy-policy') }}" id="privacy-check" style="{{ (isset($data['privacy']) && $data['privacy'] == 1)?'':'display:none;' }}">{{ translate('Privacy_Policy')}}</a>

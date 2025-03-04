@@ -5,20 +5,24 @@ namespace App\Http\Controllers\Api\V1\Auth;
 use App\Models\Zone;
 use App\Models\Admin;
 use App\Models\Store;
+use App\Models\Module;
 use App\Models\Vendor;
 use App\Models\Translation;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\CentralLogics\Helpers;
 use App\Models\VendorEmployee;
+use App\Mail\StoreRegistration;
 use App\Models\BusinessSetting;
 use App\CentralLogics\StoreLogic;
 use App\Http\Controllers\Controller;
+use App\Mail\VendorSelfRegistration;
 use Illuminate\Support\Facades\Mail;
-use App\Models\SubscriptionTransaction;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rules\Password;
 use MatanYadaev\EloquentSpatial\Objects\Point;
+use Modules\Rental\Emails\ProviderRegistration;
+use Modules\Rental\Emails\ProviderSelfRegistration;
 
 class VendorLoginController extends Controller
 {
@@ -50,10 +54,18 @@ class VendorLoginController extends Controller
                         return response()->json(data_get($storeSubscriptionCheck,'data'), data_get($storeSubscriptionCheck,'code'));
                     }
 
-
+                    if($vendor?->stores[0]?->module?->module_type == 'rental'){
+                        if(!addon_published_status('Rental')){
+                            $errors = [];
+                            array_push($errors, ['code' => 'auth-001', 'message' => translate('rental_module_is_not_available')]);
+                            return response()->json([
+                                'errors' => $errors
+                            ], 401);
+                        }
+                    }
                 $vendor->auth_token = $token;
                 $vendor->save();
-                return response()->json(['token' => $token, 'zone_wise_topic'=> $vendor->stores[0]->zone->store_wise_topic], 200);
+                return response()->json(['token' => $token, 'zone_wise_topic'=> $vendor->stores[0]->zone->store_wise_topic, 'module_type' => $vendor?->stores[0]?->module?->module_type], 200);
             }  else {
                 $errors = [];
                 array_push($errors, ['code' => 'auth-001', 'message' => translate('Credential_do_not_match,_please_try_again')]);
@@ -71,10 +83,21 @@ class VendorLoginController extends Controller
                     return response()->json(data_get($storeSubscriptionCheck,'data'), data_get($storeSubscriptionCheck,'code'));
                 }
 
+                if($vendor?->store?->module_type == 'rental'){
+                    if(!addon_published_status('Rental')){
+                        $errors = [];
+                        array_push($errors, ['code' => 'auth-001', 'message' => translate('rental_module_is_not_available')]);
+                        return response()->json([
+                            'errors' => $errors
+                        ], 401);
+                    }
+                }
+
                 $vendor->auth_token = $token;
                 $vendor->save();
                 $role = $vendor->role ? json_decode($vendor->role->modules):[];
-                return response()->json(['token' => $token, 'zone_wise_topic'=> $vendor->store->zone->store_wise_topic, 'role'=>$role], 200);
+                return response()->json(['token' => $token, 'zone_wise_topic'=> $vendor->store->zone->store_wise_topic, 'role'=>$role,
+                    'module_type' => $vendor?->store?->module_type], 200);
             } else {
                 $errors = [];
                 array_push($errors, ['code' => 'auth-001', 'message' => translate('Credential_do_not_match,_please_try_again')]);
@@ -147,6 +170,12 @@ class VendorLoginController extends Controller
                 return response()->json(['errors' => Helpers::error_processor($validator)], 403);
             }
         }
+        $module = Module::find($request['module_id']);
+        if ($module?->module_type == 'rental' && addon_published_status('Rental') && empty($request['pickup_zone_id'])){
+            $validator->getMessageBag()->add('pickup_zone_id', translate('messages.You_must_select_a_pickup_zone'));
+            return back()->withErrors($validator)
+                ->withInput();
+        }
 
         $data = json_decode($request->translations, true);
 
@@ -182,8 +211,9 @@ class VendorLoginController extends Controller
         $store->module_id = $request->module_id;
         $store->status = 0;
         $store->store_business_model = 'none';
+        $store->pickup_zone_id = $request['pickup_zone_id'] ?? json_encode([]);
         $store->save();
-        $store->module->increment('stores_count');
+        // $store->module->increment('stores_count');
         if(config('module.'.$store->module->module_type)['always_open'])
         {
             StoreLogic::insert_schedule($store->id);
@@ -199,12 +229,19 @@ class VendorLoginController extends Controller
         try{
             $admin= Admin::where('role_id', 1)->first();
             $mail_status = Helpers::get_mail_status('registration_mail_status_store');
-            if(config('mail.status') && $mail_status == '1' &&  Helpers::getNotificationStatusData('store','store_registration','mail_status')){
-                Mail::to($request['email'])->send(new \App\Mail\VendorSelfRegistration('pending', $vendor->f_name.' '.$vendor->l_name));
+            if($module?->module_type != 'rental' && config('mail.status') && $mail_status == '1' &&  Helpers::getNotificationStatusData('store','store_registration','mail_status')){
+                Mail::to($request['email'])->send(new VendorSelfRegistration('pending', $vendor->f_name.' '.$vendor->l_name));
             }
+            elseif($module?->module_type == 'rental' && addon_published_status('Rental')&& config('mail.status') && Helpers::get_mail_status('rental_registration_mail_status_provider') == '1' &&  Helpers::getRentalNotificationStatusData('provider','provider_registration','mail_status') ){
+                Mail::to($request['email'])->send(new ProviderSelfRegistration('pending', $vendor->f_name.' '.$vendor->l_name));
+            }
+
             $mail_status = Helpers::get_mail_status('store_registration_mail_status_admin');
-            if(config('mail.status') && $mail_status == '1' &&  Helpers::getNotificationStatusData('admin','store_self_registration','mail_status')){
-                Mail::to($admin['email'])->send(new \App\Mail\StoreRegistration('pending', $vendor->f_name.' '.$vendor->l_name));
+            if($module?->module_type != 'rental' && config('mail.status') && $mail_status == '1' &&  Helpers::getNotificationStatusData('admin','store_self_registration','mail_status')){
+                Mail::to($admin['email'])->send(new StoreRegistration('pending', $vendor->f_name.' '.$vendor->l_name));
+            }
+            elseif($module?->module_type == 'rental' && addon_published_status('Rental') && config('mail.status') && Helpers::get_mail_status('rental_provider_registration_mail_status_admin') == '1' &&  Helpers::getRentalNotificationStatusData('admin','provider_self_registration','mail_status') ){
+                Mail::to($admin['email'])->send(new ProviderRegistration('pending', $vendor->f_name.' '.$vendor->l_name));
             }
         }catch(\Exception $ex){
             info($ex->getMessage());
@@ -267,7 +304,8 @@ class VendorLoginController extends Controller
                         'token' => $token,
                         'package_id' => $store?->package_id,
                         'zone_wise_topic' => $store?->zone?->store_wise_topic,
-                        'type' => 'new_join'
+                        'type' => 'new_join',
+                        'module_type' => $store?->module?->module_type
                     ]
                 ]
             ];
@@ -327,7 +365,8 @@ class VendorLoginController extends Controller
                         'store_id' => $store?->id,
                         'token' => $token,
                         'zone_wise_topic' => $store?->zone?->store_wise_topic,
-                        'type' => 'new_join'
+                        'type' => 'new_join',
+                        'module_type' => $store?->module?->module_type
                     ]
                 ]
             ];

@@ -56,8 +56,8 @@
                             <input type="checkbox"
                                    data-id="available_zone_status"
                                    data-type="toggle"
-                                   data-image-on="{{ asset('/assets/admin/img/modal/dm-tips-on.png') }}"
-                                   data-image-off="{{ asset('/assets/admin/img/modal/dm-tips-off.png') }}"
+                                   data-image-on="{{ asset('/public/assets/admin/img/modal/dm-tips-on.png') }}"
+                                   data-image-off="{{ asset('/public/assets/admin/img/modal/dm-tips-off.png') }}"
                                    data-title-on="<strong>{{ translate('messages.Want_to_enable_available_zone?') }}</strong>"
                                    data-title-off="<strong>{{ translate('messages.Want_to_disable_available_zone?') }}</strong>"
                                    data-text-on="<p>{{ translate('messages.If_you_enable_this,_available_zone_section_will_be_visible.') }}</p>"
@@ -202,7 +202,7 @@
                                         <div class="icon-file">
                                             <i class="tio-edit"></i>
                                             <input type="file" name="image" id="customFileEg1" class="custom-file-input"
-                                                   accept=".jpg, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*" >
+                                                   accept=".webp, .jpg, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*" >
                                         </div>
                                     </div>
                                 </label>

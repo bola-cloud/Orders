@@ -73,7 +73,7 @@ active
 
         </div>
             <form  id="data-edit-{{ $advertisement->id }}_form" action="{{ route('vendor.advertisement.edit',[$advertisement->id ,'request_page_type'=> isset($request_page_type) ])  }}" method="get">
-               
+
             </form>
     <div class="row g-3">
         <div class="col-xl-8">

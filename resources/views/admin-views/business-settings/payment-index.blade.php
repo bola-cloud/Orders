@@ -65,8 +65,8 @@
                                     type="checkbox" id="cash_on_delivery_status"
                                     data-id="cash_on_delivery_status"
                                     data-type="status"
-                                    data-image-on="{{ asset('/assets/admin/img/modal/digital-payment-on.png') }}"
-                                    data-image-off="{{ asset('/assets/admin/img/modal/digital-payment-off.png') }}"
+                                    data-image-on="{{ asset('/public/assets/admin/img/modal/digital-payment-on.png') }}"
+                                    data-image-off="{{ asset('/public/assets/admin/img/modal/digital-payment-off.png') }}"
                                     data-title-on="{{ translate('By Turning ON Cash On Delivery Option') }}"
                                     data-title-off="{{ translate('By Turning OFF Cash On Delivery Option') }}"
                                     data-text-on="<p>{{ translate('Customers will not be able to select COD as a payment method during checkout. Please review your settings and enable COD if you wish to offer this payment option to customers.') }}</p>"
@@ -95,8 +95,8 @@
                                 <input  type="checkbox" id="digital_payment_status"
                                         data-id="digital_payment_status"
                                         data-type="status"
-                                        data-image-on="{{ asset('/assets/admin/img/modal/digital-payment-on.png') }}"
-                                        data-image-off="{{ asset('/assets/admin/img/modal/digital-payment-off.png') }}"
+                                        data-image-on="{{ asset('/public/assets/admin/img/modal/digital-payment-on.png') }}"
+                                        data-image-off="{{ asset('/public/assets/admin/img/modal/digital-payment-off.png') }}"
                                         data-title-on="{{ translate('By Turning ON Digital Payment Option') }}"
                                         data-title-off="{{ translate('By Turning OFF Digital Payment Option') }}"
                                         data-text-on="<p>{{ translate('Customers will not be able to select digital payment as a payment method during checkout. Please review your settings and enable digital payment if you wish to offer this payment option to customers.') }}</p>"
@@ -125,8 +125,8 @@
                                 <input  type="checkbox" id="offline_payment_status"
                                         data-id="offline_payment_status"
                                         data-type="status"
-                                        data-image-on="{{ asset('/assets/admin/img/modal/digital-payment-on.png') }}"
-                                        data-image-off="{{ asset('/assets/admin/img/modal/digital-payment-off.png') }}"
+                                        data-image-on="{{ asset('/public/assets/admin/img/modal/digital-payment-on.png') }}"
+                                        data-image-off="{{ asset('/public/assets/admin/img/modal/digital-payment-off.png') }}"
                                         data-title-on="{{ translate('By Turning ON Offline Payment Option') }}"
                                         data-title-off="{{ translate('By Turning OFF Offline Payment Option') }}"
                                         data-text-on="<p>{{ translate('Customers will not be able to select Offline Payment as a payment method during checkout. Please review your settings and enable Offline Payment if you wish to offer this payment option to customers.') }}</p>"
@@ -276,7 +276,7 @@
                                 <div class="form-floating mb-2" >
                                     <label for="exampleFormControlInput1"
                                            class="form-label">{{translate('logo')}}</label>
-                                    <input type="file" class="form-control logo" name="gateway_image" data-id="{{$payment->key_name}}" id="{{$payment->key_name}}-image" accept=".jpg, .png, .jpeg|image/*">
+                                    <input type="file" class="form-control logo" name="gateway_image" data-id="{{$payment->key_name}}" id="{{$payment->key_name}}-image" accept=".webp, .jpg, .png, .jpeg|image/*">
                                 </div>
 
                                 <div class="text-right mt-2 "  >

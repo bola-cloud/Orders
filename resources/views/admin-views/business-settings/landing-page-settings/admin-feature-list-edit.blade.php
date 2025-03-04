@@ -148,7 +148,7 @@
                                         <div class="position-relative">
                                         <div class="img">
                                             <img class="onerror-image" src="{{ $feature->image_full_url ?? '',
-                                                asset('/assets/admin/img/upload-3.png') }}"
+                                                asset('/public/assets/admin/img/upload-3.png') }}"
 
                                             data-onerror-image="{{asset('/assets/admin/img/upload-3.png')}}" alt="">
                                         </div>

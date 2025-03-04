@@ -478,7 +478,7 @@ class OrderController extends Controller
         }
 
         $address = [
-            'contact_person_name' => $request->contact_person_name ? $request->contact_person_name : ($request->user?$request->user->f_name . ' ' . $request->user->f_name:''),
+            'contact_person_name' => $request->contact_person_name ? $request->contact_person_name : ($request->user?$request->user->f_name . ' ' . $request->user->l_name:''),
             'contact_person_number' => $request->contact_person_number ? $request->contact_person_number : ($request->user?$request->user->phone:''),
 //            'contact_person_number' => $request->contact_person_number ? ($request->user ? $request->contact_person_number :str_replace('+', '', $request->contact_person_number)) : ($request->user?$request->user->phone:''),
             'contact_person_email' => $request->contact_person_email ? $request->contact_person_email : ($request->user?$request->user->email:''),
@@ -976,6 +976,15 @@ class OrderController extends Controller
             DB::beginTransaction();
             $order->save();
             if ($request->order_type !== 'parcel') {
+                if (count($order_details) == 0) {
+                    $errors = [];
+                    array_push($errors, ['code' => 'order_details', 'message' => translate('messages.You_can_not_place_empty_orders')]);
+                    DB::rollBack();
+                    return response()->json([
+                        'errors' => $errors
+                    ], 403);
+                }
+
                 foreach ($order_details as $key => $item) {
                     $order_details[$key]['order_id'] = $order->id;
 

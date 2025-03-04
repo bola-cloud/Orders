@@ -299,6 +299,7 @@ Route::group(['namespace' => 'Api\V1', 'middleware'=>'localization'], function (
         Route::get('/get-zone-id', 'ConfigController@get_zone');
         Route::get('place-api-autocomplete', 'ConfigController@place_api_autocomplete');
         Route::get('distance-api', 'ConfigController@distance_api');
+        Route::get('direction-api', 'ConfigController@direction_api');
         Route::get('place-api-details', 'ConfigController@place_api_details');
         Route::get('geocode-api', 'ConfigController@geocode_api');
         Route::get('get-PaymentMethods', 'ConfigController@getPaymentMethods');
@@ -487,12 +488,13 @@ Route::group(['namespace' => 'Api\V1', 'middleware'=>'localization'], function (
             Route::get('/items', 'FlashSaleController@get_flash_sale_items');
         });
 
-        Route::get('coupon/list', 'CouponController@list');
+        Route::get('coupon/list/all', 'CouponController@list');
         Route::group(['prefix' => 'coupon', 'middleware' => 'auth:api'], function () {
+            Route::get('list', 'CouponController@list');
             Route::get('apply', 'CouponController@apply');
         });
-        Route::get('cashback/list', 'CashBackController@list');
         Route::group(['prefix' => 'cashback', 'middleware' => 'auth:api'], function () {
+            Route::get('list', 'CashBackController@list');
             Route::get('getCashback', 'CashBackController@getCashback');
         });
 

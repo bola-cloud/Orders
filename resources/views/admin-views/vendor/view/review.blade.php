@@ -253,7 +253,7 @@
                     <!-- End Unfold -->
                 </div>
             </div>
-           
+
 
                             @php($reviews = $store->reviews()->with('item',function($query){
                                 $query->withoutGlobalScope(\App\Scopes\StoreScope::class);

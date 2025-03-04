@@ -77,8 +77,8 @@
 
                             <label class="toggle-switch justify-content-end  rounded">
                                 <input type="checkbox" data-id="join_seller_flutter_status" data-type="status"
-                                    data-image-on="{{ asset('/assets/admin/img/modal/seller-app-on.png') }}"
-                                    data-image-off="{{ asset('/assets/admin/img/modal/seller-app-off.png') }}"
+                                    data-image-on="{{ asset('/public/assets/admin/img/modal/seller-app-on.png') }}"
+                                    data-image-off="{{ asset('/public/assets/admin/img/modal/seller-app-off.png') }}"
                                     data-title-on="<strong>{{ translate('messages.Want_to_enable_Join_as_a_Seller_Section?') }}</strong>"
                                     data-title-off="<strong>{{ translate('messages.Want_to_disable_Join_as_a_Seller_Section?') }}</strong>"
                                     data-text-on="<p>{{ translate('messages.If_you_enable_this,_Join_as_a_Seller_Section_will_be_visible.') }}</p>"
@@ -276,8 +276,8 @@
 
                             <label class="toggle-switch justify-content-end  rounded">
                                 <input type="checkbox" data-id="join_DM_flutter_status" data-type="status"
-                                    data-image-on="{{ asset('/assets/admin/img/modal/home-delivery-on.png') }}"
-                                    data-image-off="{{ asset('/assets/admin/img/modal/home-delivery-off.png') }}"
+                                    data-image-on="{{ asset('/public/assets/admin/img/modal/home-delivery-on.png') }}"
+                                    data-image-off="{{ asset('/public/assets/admin/img/modal/home-delivery-off.png') }}"
                                     data-title-on="<strong>{{ translate('messages.Want_to_enable_Join_as_a_Deliveryman_Section?') }}</strong>"
                                     data-title-off="<strong>{{ translate('messages.Want_to_disable_Join_as_a_Deliveryman_Section?') }}</strong>"
                                     data-text-on="<p>{{ translate('messages.If_you_enable_this,_Join_as_a_Deliveryman_Section_will_be_visible.') }}</p>"

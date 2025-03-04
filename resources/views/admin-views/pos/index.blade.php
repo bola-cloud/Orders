@@ -455,7 +455,7 @@
                                     const service = new google.maps.DistanceMatrixService();
                                     // build request
                                     const origin1 = { lat: {{$store['latitude']}}, lng: {{$store['longitude']}} };
-                                    const origin2 = "{{ str_replace(["\n", "\r"], ' ', $store->address) }}";
+                                    const origin2 = "{{$store->address}}";
                                     const destinationA = address;
                                     const destinationB = { lat: coordinates['lat'], lng: coordinates['lng'] };
                                     const request = {

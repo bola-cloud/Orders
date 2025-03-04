@@ -201,8 +201,8 @@
 
                             <label class="toggle-switch justify-content-end  rounded">
                                 <input type="checkbox" data-id="join_seller_react_status" data-type="status"
-                                       data-image-on="{{ asset('/assets/admin/img/modal/seller-app-on.png') }}"
-                                       data-image-off="{{ asset('/assets/admin/img/modal/seller-app-off.png') }}"
+                                       data-image-on="{{ asset('/public/assets/admin/img/modal/seller-app-on.png') }}"
+                                       data-image-off="{{ asset('/public/assets/admin/img/modal/seller-app-off.png') }}"
                                        data-title-on="<strong>{{ translate('messages.Want_to_enable_Seller_Section_Content?') }}</strong>"
                                        data-title-off="<strong>{{ translate('messages.Want_to_disable_Seller_Section_Content?') }}</strong>"
                                        data-text-on="<p>{{ translate('messages.If_you_enable_this,_Seller_Section_Content_will_be_visible.') }}</p>"
@@ -425,8 +425,8 @@
 
                             <label class="toggle-switch justify-content-end  rounded">
                                 <input type="checkbox" data-id="join_DM_react_status" data-type="status"
-                                       data-image-on="{{ asset('/assets/admin/img/modal/seller-app-on.png') }}"
-                                       data-image-off="{{ asset('/assets/admin/img/modal/seller-app-off.png') }}"
+                                       data-image-on="{{ asset('/public/assets/admin/img/modal/seller-app-on.png') }}"
+                                       data-image-off="{{ asset('/public/assets/admin/img/modal/seller-app-off.png') }}"
                                        data-title-on="<strong>{{ translate('messages.Want_to_enable_Deliveryman_Section_Content?') }}</strong>"
                                        data-title-off="<strong>{{ translate('messages.Want_to_disable_Deliveryman_Section_Content?') }}</strong>"
                                        data-text-on="<p>{{ translate('messages.If_you_enable_this,_Deliveryman_Section_Content_will_be_visible.') }}</p>"

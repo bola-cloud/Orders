@@ -143,7 +143,7 @@
                                 </div>
                                 <div class="custom-file">
                                     <input type="file" name="image" id="customFileEg1" class="custom-file-input"
-                                            accept=".jpg, .png, .webp , .jpeg, .gif, .bmp, .tif, .tiff|image/*" required>
+                                            accept=".webp, .jpg, .png, .webp , .jpeg, .gif, .bmp, .tif, .tiff|image/*" required>
                                     <label class="custom-file-label" for="customFileEg1">{{translate('messages.choose_file')}}</label>
                                 </div>
                             </div>
@@ -167,7 +167,7 @@
                                         <label class="input-label" for="exampleFormControlSelect1">{{translate('messages.category')}}<span
                                                 class="input-label-secondary">*</span></label>
                                         <select name="category_id" id="category_id" class="form-control js-select2-custom get-request"
-                                                data-url="{{url('/')}}/store-panel/item/get-categories?parent_id=" data-id="sub-categories">
+                                                data-url="{{url('/')}}/vendor-panel/item/get-categories?parent_id=" data-id="sub-categories">
                                             <option value="">---{{translate('messages.select')}}---</option>
                                             @foreach($categories as $category)
                                                 <option value="{{$category['id']}}">{{$category['name']}}</option>
@@ -179,7 +179,7 @@
                                     <div class="form-group mb-0">
                                         <label class="input-label" for="exampleFormControlSelect1">{{translate('messages.sub_category')}}<span
                                                 class="input-label-secondary"></span></label>
-                                        <select name="sub_category_id" id="sub-categories" class="form-control js-select2-custom get-request" data-url="{{url('/')}}/store-panel/item/get-categories?parent_id=" data-id="sub-sub-categories">
+                                        <select name="sub_category_id" id="sub-categories" class="form-control js-select2-custom get-request" data-url="{{url('/')}}/vendor-panel/item/get-categories?parent_id=" data-id="sub-sub-categories">
                                         </select>
                                     </div>
                                 </div>

@@ -138,7 +138,7 @@
                                         </td>
                                         <td>
                                             <img
-                                            src="{{ $criteria->image_full_url ?? asset('/assets/admin/img/upload-3.png') }}" 
+                                            src="{{ $criteria->image_full_url ?? asset('/public/assets/admin/img/upload-3.png') }}"
                                             data-onerror-image="{{asset('/assets/admin/img/upload-3.png')}}" class="__size-105 onerror-image" alt="">
                                         </td>
                                         <td>
@@ -146,8 +146,8 @@
                                                 <input type="checkbox"
                                                        data-id="status-{{$criteria->id}}"
                                                        data-type="status"
-                                                       data-image-on="{{ asset('/assets/admin/img/modal/this-criteria-on.png') }}"
-                                                       data-image-off="{{ asset('/assets/admin/img/modal/this-criteria-off.png') }}"
+                                                       data-image-on="{{ asset('/public/assets/admin/img/modal/this-criteria-on.png') }}"
+                                                       data-image-off="{{ asset('/public/assets/admin/img/modal/this-criteria-off.png') }}"
                                                        data-title-on="{{ translate('messages.want_to_enable') }} <strong>{{ translate('this_feature?') }}"
                                                        data-title-off="{{ translate('messages.want_to_disable') }} <strong>{{ translate('this_feature?') }}"
                                                        data-text-on="<p>{{ translate('If_yes,_it_will_be_available_on_the_landing_page.') }}</p>"

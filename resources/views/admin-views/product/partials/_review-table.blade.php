@@ -5,7 +5,7 @@
         @if ($review->item)
             <a class="media align-items-center" href="{{route('admin.item.view',[$review->item['id']])}}">
                 <img class="avatar avatar-lg mr-3 onerror-image"
-              
+
                 src="{{ $review->item['image_full_url'] ?? asset('assets/admin/img/160x160/img2.jpg') }}"
 
                 data-onerror-image="{{asset('assets/admin/img/160x160/img2.jpg')}}" alt="{{$review->item->name}} image">

@@ -82,7 +82,7 @@
                                         <div class="custom-file">
                                             <input type="file" name="image" id="customFileUpload"
                                                 class="custom-file-input read-url"
-                                                accept=".jpg, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*"
+                                                accept=".webp, .jpg, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*"
                                                 value="{{ old('image') }}" required>
                                             <label class="custom-file-label"
                                                 for="customFileUpload">{{ translate('messages.choose_file') }}</label>
@@ -111,7 +111,7 @@
                                         <div class="col-md-4">
                                             <div class="js-form-message form-group mb-0">
                                                 <label class="input-label" for="signupSrPassword">{{translate('messages.password')}} <span class="form-label-secondary" data-toggle="tooltip" data-placement="right"
-        data-original-title="{{ translate('messages.Must_contain_at_least_one_number_and_one_uppercase_and_lowercase_letter_and_symbol,_and_at_least_8_or_more_characters') }}"><img src="{{ asset('/assets/admin/img/info-circle.svg') }}" alt="{{ translate('messages.Must_contain_at_least_one_number_and_one_uppercase_and_lowercase_letter_and_symbol,_and_at_least_8_or_more_characters') }}"></span></label>
+        data-original-title="{{ translate('messages.Must_contain_at_least_one_number_and_one_uppercase_and_lowercase_letter_and_symbol,_and_at_least_8_or_more_characters') }}"><img src="{{ asset('/public/assets/admin/img/info-circle.svg') }}" alt="{{ translate('messages.Must_contain_at_least_one_number_and_one_uppercase_and_lowercase_letter_and_symbol,_and_at_least_8_or_more_characters') }}"></span></label>
 
                                                 <div class="input-group input-group-merge">
                                                     <input type="password" class="js-toggle-password form-control" name="password" id="signupSrPassword" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="{{ translate('messages.Must_contain_at_least_one_number_and_one_uppercase_and_lowercase_letter_and_symbol,_and_at_least_8_or_more_characters') }}"
@@ -119,7 +119,7 @@
                                                     aria-label="8+ characters required" required
                                                     data-msg="Your password is invalid. Please try again."
                                                     data-hs-toggle-password-options='{
-                                                    "target": [".js-toggle-password-target-1", ".js-toggle-password-target-2"],
+                                                    "target": [".js-toggle-password-target-1"],
                                                     "defaultClass": "tio-hidden-outlined",
                                                     "showClass": "tio-visible-outlined",
                                                     "classChangeTarget": ".js-toggle-passowrd-show-icon-1"
@@ -141,7 +141,7 @@
                                                 aria-label="8+ characters required" required
                                                         data-msg="Password does not match the confirm password."
                                                         data-hs-toggle-password-options='{
-                                                        "target": [".js-toggle-password-target-1", ".js-toggle-password-target-2"],
+                                                        "target": [".js-toggle-password-target-2"],
                                                         "defaultClass": "tio-hidden-outlined",
                                                         "showClass": "tio-visible-outlined",
                                                         "classChangeTarget": ".js-toggle-passowrd-show-icon-2"

@@ -69,7 +69,7 @@
             </div>
         @endforeach
         @if (count($disbursements) === 0)
-       
+
             <div class="empty--data">
                  <img src="{{ asset('/assets/admin/svg/illustrations/sorry.svg') }}" alt="public">
                 <h5>

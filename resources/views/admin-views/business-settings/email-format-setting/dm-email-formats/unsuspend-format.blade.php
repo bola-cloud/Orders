@@ -34,7 +34,7 @@
                             <h5 class="text-capitalize m-0 text--primary pl-2">
                                 {{translate('Send_Mail_On_Deliveryman’s_Account_Unsuspension')}}
                                 <span class="input-label-secondary" data-toggle="tooltip" data-placement="right" data-original-title="{{ translate('If_a_Store_or_Admin_unsuspends_a_Deliveryman’s_account,_he_or_she_will_receive_an_automated_email.')}}">
-                                    <img src="{{ asset('/assets/admin/img/info-circle.svg') }}" alt="{{ translate('messages.show_hide_food_menu') }}">
+                                    <img src="{{ asset('/public/assets/admin/img/info-circle.svg') }}" alt="{{ translate('messages.show_hide_food_menu') }}">
                                 </span>
                             </h5>
                             <label class="toggle-switch toggle-switch-sm">
@@ -110,11 +110,11 @@
                                     <div>
                                         <h5 class="card-title mb-3">
                                             {{translate('Logo')}}   <span class="input-label-secondary" data-toggle="tooltip" data-placement="right" data-original-title="{{ translate('Logo_must_be_1:1.')}}">
-                                                <img src="{{ asset('/assets/admin/img/info-circle.svg') }}" alt="{{ translate('messages.show_hide_food_menu') }}">
+                                                <img src="{{ asset('/public/assets/admin/img/info-circle.svg') }}" alt="{{ translate('messages.show_hide_food_menu') }}">
                                             </span>
                                         </h5>
                                         <label class="custom-file">
-                                            <input type="file" name="logo" id="mail-logo" class="custom-file-input" accept=".jpg, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*">
+                                            <input type="file" name="logo" id="mail-logo" class="custom-file-input" accept=".webp, .jpg, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*">
                                             <span class="custom-file-label">{{ translate('messages.Choose_File') }}</span>
                                         </label>
                                     </div>
@@ -129,7 +129,7 @@
                                                 <div class="form-group">
                                                     <label class="form-label">{{translate('Main_Title')}}({{ translate('messages.default') }})
                                                         <span class="input-label-secondary" data-toggle="tooltip" data-placement="right" data-original-title="{{ translate('Write_the_main_title_within_45_characters')}}">
-                                                            <img src="{{ asset('/assets/admin/img/info-circle.svg') }}" alt="{{ translate('messages.show_hide_food_menu') }}">
+                                                            <img src="{{ asset('/public/assets/admin/img/info-circle.svg') }}" alt="{{ translate('messages.show_hide_food_menu') }}">
                                                         </span>
                                                     </label>
                                                     <input type="text" maxlength="45" name="title[]" value="{{ $data?->getRawOriginal('title') }}" data-id="mail-title" placeholder="{{ translate('Order_has_been_placed_successfully.') }}" class="form-control">
@@ -166,7 +166,7 @@
                                                     <div class="form-group">
                                                        <label class="form-label">{{translate('Main_Title')}}({{strtoupper($lang)}})
                                                             <span class="input-label-secondary" data-toggle="tooltip" data-placement="right" data-original-title="{{ translate('Write_the_title_within_45_characters')}}">
-                                                                <img src="{{ asset('/assets/admin/img/info-circle.svg') }}" alt="{{ translate('messages.show_hide_food_menu') }}">
+                                                                <img src="{{ asset('/public/assets/admin/img/info-circle.svg') }}" alt="{{ translate('messages.show_hide_food_menu') }}">
                                                             </span>
                                                         </label>
                                                         <input type="text" maxlength="45" name="title[]"  placeholder="{{ translate('Order_has_been_placed_successfully.') }}" class="form-control" value="{{$translate[$lang]['title']??''}}">
@@ -190,7 +190,7 @@
                                                 <div class="form-group">
                                                     <label class="form-label">{{translate('Main_Title')}}
                                                     <span class="input-label-secondary" data-toggle="tooltip" data-placement="right" data-original-title="{{ translate('Write_the_title_within_45_characters')}}">
-                                                                <img src="{{ asset('/assets/admin/img/info-circle.svg') }}" alt="{{ translate('messages.show_hide_food_menu') }}">
+                                                                <img src="{{ asset('/public/assets/admin/img/info-circle.svg') }}" alt="{{ translate('messages.show_hide_food_menu') }}">
                                                             </span></label>
                                                     <input type="text" maxlength="45" name="title[]" placeholder="{{ translate('Order_has_been_placed_successfully.') }}"class="form-control">
                                                 </div>
@@ -219,7 +219,7 @@
                                             </span>
                                         </h5>
                                         <label class="custom-file">
-                                            <input type="file" name="image" id="mail-banner" class="custom-file-input" accept=".jpg, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*">
+                                            <input type="file" name="image" id="mail-banner" class="custom-file-input" accept=".webp, .jpg, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*">
                                             <span class="custom-file-label">{{ translate('messages.Choose_File') }}</span>
                                         </label>
                                     </div>

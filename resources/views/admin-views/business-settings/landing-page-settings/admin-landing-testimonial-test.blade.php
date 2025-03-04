@@ -70,7 +70,7 @@
                                             <div class="img">
                                                 <img
 
-                                                src="{{ $review?->reviewer_image_full_url ?? asset('/assets/admin/img/aspect-1.png') }}" data-onerror-image="{{asset("/public/assets/admin/img/aspect-1.png")}}" class="img__aspect-1 mw-100 min-w-187px max-w-187px onerror-image" alt="">
+                                                src="{{ $review?->reviewer_image_full_url ?? asset('/public/assets/admin/img/aspect-1.png') }}" data-onerror-image="{{asset("/public/assets/admin/img/aspect-1.png")}}" class="img__aspect-1 mw-100 min-w-187px max-w-187px onerror-image" alt="">
                                             </div>
                                             <input type="file"  name="reviewer_image" hidden="">
                                              @if (isset($review->reviewer_image))
@@ -92,7 +92,7 @@
                                             <div class="img">
                                                 <img
 
-                                                src="{{ $review?->company_image_full_url ?? asset('/assets/admin/img/aspect-3-1.png') }}" data-onerror-image="{{asset("/public/assets/admin/img/aspect-3-1.png")}}" class="vertical-img max-w-187px onerror-image" alt="">
+                                                src="{{ $review?->company_image_full_url ?? asset('/public/assets/admin/img/aspect-3-1.png') }}" data-onerror-image="{{asset("/public/assets/admin/img/aspect-3-1.png")}}" class="vertical-img max-w-187px onerror-image" alt="">
                                             </div>
                                             <input type="file" id="image-upload-2" name="company_image" hidden="">
                                             @if (isset($review->company_image))

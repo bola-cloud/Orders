@@ -20,6 +20,19 @@
                 </div>
             </div>
         </div>
+        @if (addon_published_status('Rental'))
+            @php($id = request()->user_id)
+            <!-- Nav Menus -->
+            <ul class="nav nav-tabs border-0 nav--tabs nav--pills mb-4">
+                <li class="nav-item">
+                    <a class="nav-link {{ request()->module != 1 ? 'active' : '' }}   " href="{{ route('admin.users.customer.view', $id)}}">{{ translate('All_Module') }}</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link {{ request()->module == 1 ?'active' : '' }} " href="{{ route('admin.users.customer.rental.view',['module'=> true,'user_id'=>$id])  }}">{{ translate('Rental_Module') }}</a>
+                </li>
+            </ul>
+        @endif
         <!-- End Page Header -->
         @if ($customer['f_name'])
         <div class="card mb-3">

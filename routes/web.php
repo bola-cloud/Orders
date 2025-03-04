@@ -108,6 +108,8 @@ if (!$is_published) {
                 ->withoutMiddleware([\App\Http\Middleware\VerifyCsrfToken::class]);
             Route::post('callback', [RazorPayController::class, 'callback'])->name('callback')
                 ->withoutMiddleware([\App\Http\Middleware\VerifyCsrfToken::class]);
+            Route::any('cancel', [RazorPayController::class, 'cancel'])->name('cancel')
+                ->withoutMiddleware([\App\Http\Middleware\VerifyCsrfToken::class]);
         });
 
         //PAYPAL
@@ -196,10 +198,11 @@ Route::get('module-test', function () {
 });
 
 //Restaurant Registration
-Route::group(['prefix' => 'store', 'as' => 'restaurant.'], function () {
+Route::group(['prefix' => 'vendor', 'as' => 'restaurant.'], function () {
     Route::get('apply', 'VendorController@create')->name('create');
     Route::post('apply', 'VendorController@store')->name('store');
     Route::get('get-all-modules', 'VendorController@get_all_modules')->name('get-all-modules');
+    Route::get('get-module-type', 'VendorController@get_modules_type')->name('get-module-type');
 
     Route::get('back', 'VendorController@back')->name('back');
     Route::post('business-plan', 'VendorController@business_plan')->name('business_plan');

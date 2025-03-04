@@ -2,15 +2,17 @@
 
 namespace App\Http\Controllers\Vendor;
 
-use App\CentralLogics\Helpers;
-use App\Http\Controllers\Controller;
+use Carbon\Carbon;
 use App\Models\Item;
 use App\Models\Order;
+use App\Models\Store;
 use App\Models\Vendor;
-use App\Models\OrderTransaction;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
+use App\CentralLogics\Helpers;
+use App\Models\OrderTransaction;
 use Illuminate\Support\Facades\DB;
+use Modules\Rental\Entities\Trips;
+use App\Http\Controllers\Controller;
 
 class DashboardController extends Controller
 {
@@ -60,28 +62,36 @@ class DashboardController extends Controller
 
         $out_of_stock_count=  Helpers::get_store_data()->module->module_type != 'food' ?  $items->orderby('stock')->latest()->count() : null;
 
-            $item = null;
-            if($out_of_stock_count == 1 ){
-                $item= $items->orderby('stock')->latest()->first();
-            }
-
+        $item = null;
+        if($out_of_stock_count == 1 ){
+            $item= $items->orderby('stock')->latest()->first();
+        }
 
         return view('vendor-views.dashboard', compact('data', 'earning', 'commission', 'params','out_of_stock_count','item'));
     }
 
     public function store_data()
     {
-        $new_pending_order = DB::table('orders')->where(['checked' => 0])->where('store_id', Helpers::get_store_id())->where('order_status','pending');
-        if(config('order_confirmation_model') != 'store' && !Helpers::get_store_data()->sub_self_delivery)
-        {
-            $new_pending_order = $new_pending_order->where('order_type', 'take_away');
+
+        $store= Helpers::get_store_data();
+        if($store->module_type == 'rental'){
+            $type='trip';
+            $new_pending_order=Trips::where(['checked' => 0])->where('provider_id', $store->id)->count();
+
+        } else{
+            $new_pending_order = DB::table('orders')->where(['checked' => 0])->where('store_id', $store->id)->where('order_status','pending');
+            if(config('order_confirmation_model') != 'store' && !$store->sub_self_delivery)
+            {
+                $new_pending_order = $new_pending_order->where('order_type', 'take_away');
+            }
+            $new_pending_order = $new_pending_order->count();
+            $new_confirmed_order = DB::table('orders')->where(['checked' => 0])->where('store_id', $store->id)->whereIn('order_status',['confirmed', 'accepted'])->whereNotNull('confirmed')->count();
+            $type= 'store_order';
         }
-        $new_pending_order = $new_pending_order->count();
-        $new_confirmed_order = DB::table('orders')->where(['checked' => 0])->where('store_id', Helpers::get_store_id())->whereIn('order_status',['confirmed', 'accepted'])->whereNotNull('confirmed')->count();
 
         return response()->json([
             'success' => 1,
-            'data' => ['new_pending_order' => $new_pending_order, 'new_confirmed_order' => $new_confirmed_order]
+            'data' => ['new_pending_order' => $new_pending_order, 'new_confirmed_order' => $new_confirmed_order?? 0, 'order_type' =>$type]
         ]);
     }
 

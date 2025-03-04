@@ -74,8 +74,8 @@
                                     <input id="mail-config-disable" type="checkbox"
                                            data-id="mail-config-disable"
                                             data-type="status"
-                                            data-image-on="{{ asset('/assets/admin/img/modal/mail-success.png') }}"
-                                            data-image-off="{{ asset('/assets/admin/img/modal/mail-warning.png') }}"
+                                            data-image-on="{{ asset('/public/assets/admin/img/modal/mail-success.png') }}"
+                                            data-image-off="{{ asset('/public/assets/admin/img/modal/mail-warning.png') }}"
                                             data-title-on="{{ translate('Important!') }}"
                                             data-title-off="{{ translate('Warning!') }}"
                                             data-text-on="<p>{{ translate('Enabling mail configuration services will allow the system to send emails. Please ensure that you have correctly configured the SMTP settings to avoid potential issues with email delivery.') }}</p>

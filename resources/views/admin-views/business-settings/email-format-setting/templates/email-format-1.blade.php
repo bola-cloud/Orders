@@ -6,17 +6,17 @@ $company_name = App\Models\BusinessSetting::where('key', 'business_name')->first
 
         <tr>
             <td class="main-table-td">
-                <img class="mail-img-1 onerror-image" data-onerror-image="{{ asset('/assets/admin/img/blank1.png') }}"
+                <img class="mail-img-1 onerror-image" data-onerror-image="{{ asset('/public/assets/admin/img/blank1.png') }}"
 
-                src="{{ $data['logo_full_url'] ?? asset('/assets/admin/img/blank1.png') }}"
+                src="{{ $data['logo_full_url'] ?? asset('/public/assets/admin/img/blank1.png') }}"
 
                 id="logoViewer" alt="">
 
                 <h2 class="mt-2" id="mail-title">{{ $data['title']?? translate('Main_Title_or_Subject_of_the_Mail') }}</h2>
                 <div class="mb-1" id="mail-body">{!! $data['body']?? translate('Hi_Sabrina,') !!}</div>
-                <img class="mb-2 mail-img-3 onerror-image" id="bannerViewer" data-onerror-image="{{ asset('/assets/admin/img/blank2.png') }}"
+                <img class="mb-2 mail-img-3 onerror-image" id="bannerViewer" data-onerror-image="{{ asset('/public/assets/admin/img/blank2.png') }}"
 
-                src="{{ $data['image_full_url'] ?? asset('/assets/admin/img/blank2.png') }}"
+                src="{{ $data['image_full_url'] ?? asset('/public/assets/admin/img/blank2.png') }}"
 
                 alt="iamge">
                 <a href="" class="cmn-btn" id="mail-button">{{ $data['button_name']??'Submit' }}</a>

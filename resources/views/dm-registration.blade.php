@@ -173,7 +173,7 @@ $countryCode= strtolower($country?$country->value:'auto');
                                     <div class="form-group mb-3">
                                         <label class="input-label"
                                             for="exampleFormControlInput1">{{ translate('messages.password') }}  <span class="form-label-secondary" data-toggle="tooltip" data-placement="right"
-        data-original-title="{{ translate('messages.Must_contain_at_least_one_number_and_one_uppercase_and_lowercase_letter_and_symbol,_and_at_least_8_or_more_characters') }}"><img src="{{ asset('/assets/admin/img/info-circle.svg') }}" alt="{{ translate('messages.Must_contain_at_least_one_number_and_one_uppercase_and_lowercase_letter_and_symbol,_and_at_least_8_or_more_characters') }}"></span></label>
+        data-original-title="{{ translate('messages.Must_contain_at_least_one_number_and_one_uppercase_and_lowercase_letter_and_symbol,_and_at_least_8_or_more_characters') }}"><img src="{{ asset('/public/assets/admin/img/info-circle.svg') }}" alt="{{ translate('messages.Must_contain_at_least_one_number_and_one_uppercase_and_lowercase_letter_and_symbol,_and_at_least_8_or_more_characters') }}"></span></label>
                                         <input type="text" name="password" class="form-control __form-control" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="{{ translate('messages.Must_contain_at_least_one_number_and_one_uppercase_and_lowercase_letter_and_symbol,_and_at_least_8_or_more_characters') }}"
                                         placeholder="{{ translate('messages.password_length_placeholder', ['length' => '8+']) }}"
                                         aria-label="8+ characters required"
@@ -193,7 +193,7 @@ $countryCode= strtolower($country?$country->value:'auto');
                                             <div class="icon-file-group">
                                                 <div class="icon-file">
                                                     <input type="file" name="image" id="customFileEg1" class="form-control __form-control"
-                                                    accept=".jpg, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*" required>
+                                                    accept=".webp, .jpg, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*" required>
                                                     <img src="{{asset('/assets/admin/img/pen.png')}}" alt="">
                                                 </div>
                                             </div>

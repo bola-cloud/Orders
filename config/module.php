@@ -2,7 +2,7 @@
 
 return [
     'module_type'=>[
-        'grocery', 'food', 'pharmacy', 'ecommerce','parcel'
+        'grocery', 'food', 'pharmacy', 'ecommerce','parcel','rental'
     ],
 
     'grocery'=>[
@@ -28,6 +28,7 @@ return [
         'brand'=>false,
         'generic_name'=>false,
         'description'=>'In this type, You can set delivery slot start after x minutes from current time, No available time for items and has stock for items.',
+        'is_rental'=>false,
     ],
 
     'food'=>[
@@ -53,6 +54,7 @@ return [
         'brand'=>false,
         'generic_name'=>false,
         'description'=>'In this type, you can set item available time, no stock management for items and has option to add add-on.',
+        'is_rental'=>false,
     ],
 
     'pharmacy'=>[
@@ -78,6 +80,7 @@ return [
         'brand'=>false,
         'generic_name'=>true,
         'description'=>'In this type, Customer can upload prescription when place order, No available time for items and has stock for items.',
+        'is_rental'=>false,
     ],
 
     'ecommerce'=>[
@@ -103,6 +106,7 @@ return [
         'brand'=>true,
         'generic_name'=>false,
         'description'=>'In this type, No opening and closing time for store, no available time for items and has stock for items.',
+        'is_rental'=>false,
     ],
 
     'parcel'=>[
@@ -128,5 +132,31 @@ return [
         'brand'=>false,
         'generic_name'=>false,
         'description'=>'',
+        'is_rental'=>false,
+    ],
+    'rental'=>[
+        'order_status'=>['accepted'=>false],
+        'order_place_to_schedule_interval'=>false,
+        'add_on'=>false,
+        'stock'=>false,
+        'veg_non_veg'=>false,
+        'unit'=>false,
+        'order_attachment'=>false,
+        'always_open'=>false,
+        'all_zone_service'=>false,
+        'item_available_time'=>false,
+        'show_restaurant_text'=>false,
+        'is_parcel'=>false,
+        'organic'=>false,
+        'cutlery'=>false,
+        'common_condition'=>false,
+        'nutrition'=>false,
+        'allergy'=>false,
+        'basic'=>false,
+        'halal'=>false,
+        'brand'=>false,
+        'generic _name'=>false,
+        'description'=>'',
+        'is_rental'=>true,
     ],
 ];

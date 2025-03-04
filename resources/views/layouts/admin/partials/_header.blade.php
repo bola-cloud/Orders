@@ -249,10 +249,11 @@
                                 <div class="__nav-module-body">
                                     <div class="__nav-module-items">
                                         @foreach ($modules as $module)
+                                        @if(($module->module_type == 'rental' && addon_published_status('Rental') == 1) || $module->module_type != 'rental')
                                             <a href="javascript:"
 
                                                data-module-id="{{ $module->id }}"
-                                               data-url="{{route('admin.dashboard')}}"
+                                               data-url="{{$module->module_type == 'rental' && addon_published_status('Rental') ? route('admin.rental.dashboard') : route('admin.dashboard')}}"
                                                data-filter="module_id"
 
                                                class="__nav-module-item set-module {{Config::get('module.current_module_id') == $module->id?'active':''}}">
@@ -266,6 +267,7 @@
                                                     {{ $module->module_name }}
                                                 </div>
                                             </a>
+                                        @endif
                                         @endforeach
                                         @if (\App\CentralLogics\Helpers::module_permission_check('module'))
                                             <a href="{{ route('admin.business-settings.module.create') }}"
@@ -278,7 +280,7 @@
                                 </div>
                             @else
                                 <div class="__nav-module-body text-center py-5">
-                                    <img class="w--120px" src="{{ asset('/assets/admin/img/empty-box.png') }}"
+                                    <img class="w--120px" src="{{ asset('/public/assets/admin/img/empty-box.png') }}"
                                          alt="">
                                     <h2 class="my-4">{{ translate('Please, Enable or Create Module First') }}</h2>
                                     <a href="{{ route('admin.business-settings.module.index') }}"

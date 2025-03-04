@@ -100,7 +100,7 @@
                                 <th class="border-0 w--1">{{translate('messages.module_id')}}</th>
                                 <th class="border-0 w--2">{{translate('messages.name')}}</th>
                                 <th class="border-0 w--2">{{translate('messages.business_Module_type')}}</th>
-                                <th class="border-0 text-center w--2">{{translate('messages.total_stores')}}</th>
+                                <th class="border-0 text-center w--2">{{translate('messages.total_vendors')}}</th>
                                 <th class="border-0 w--1">{{translate('messages.status')}}</th>
                                 <th class="border-0 text-center w--15">{{translate('messages.action')}}</th>
                             </tr>
@@ -108,6 +108,7 @@
 
                         <tbody id="table-div">
                         @foreach($modules as $key=>$module)
+                        @if(($module->module_type == 'rental' && addon_published_status('Rental') == 1) || $module->module_type != 'rental')
                             <tr>
                                 <td class="pl-4">{{$key+$modules->firstItem()}}</td>
                                 <td>{{$module->id}}</td>
@@ -121,7 +122,11 @@
                                         {{Str::limit(translate($module['module_type']), 20,'...')}}
                                     </span>
                                 </td>
-                                <td class="text-center">{{$module->stores_count}}</td>
+                                <td class="text-center">
+                                    {{$module->stores->filter(function($store) {
+                                        return $store->vendor && $store->vendor->status == 1;
+                                    })->count()}}
+                                </td>
                                 <td>
                                     <label class="toggle-switch toggle-switch-sm" for="status-{{$module->id}}">
                                     <input type="checkbox" class="toggle-switch-input dynamic-checkbox"
@@ -150,6 +155,7 @@
                                     </div>
                                 </td>
                             </tr>
+                        @endif
                         @endforeach
                         </tbody>
                     </table>

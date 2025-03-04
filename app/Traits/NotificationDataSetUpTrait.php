@@ -746,21 +746,7 @@ trait NotificationDataSetUpTrait
         ];
 
 
-            foreach($data as $item){
-
-                if(NotificationSetting::where('key', $item['key'])->where('type', $item['type'])->doesntExist()){
-                    $notificationsetting = NotificationSetting::firstOrNew(
-                        ['key' => $item['key'], 'type' => $item['type']]
-                    );
-                    $notificationsetting->title = $item['title'];
-                    $notificationsetting->sub_title = $item['sub_title'];
-                    $notificationsetting->mail_status = $item['mail_status'];
-                    $notificationsetting->sms_status = $item['sms_status'];
-                    $notificationsetting->push_notification_status = $item['push_notification_status'];
-                    $notificationsetting->save();
-
-                }
-            }
+            self::checkAndUpdateAdminNotificationData($data);
             self::deleteAdminNotificationSetupData();
             return true;
     }
@@ -797,5 +783,300 @@ trait NotificationDataSetUpTrait
             NotificationSetting::where('key', $item['key'])->where('type', $item['type'])->delete();
         }
         return true;
+    }
+
+    public static function checkAndUpdateAdminNotificationData($data){
+        foreach($data as $item){
+            if(NotificationSetting::where('key', $item['key'])->where('type', $item['type'])->where('module_type', data_get($item,'module_type','all'))->doesntExist()){
+                $notificationsetting = NotificationSetting::firstOrNew(
+                    ['key' => $item['key'], 'type' => $item['type'], 'module_type' => data_get($item,'module_type','all')]
+                );
+                $notificationsetting->title = $item['title'];
+                $notificationsetting->sub_title = $item['sub_title'];
+                $notificationsetting->mail_status = $item['mail_status'];
+                $notificationsetting->sms_status = $item['sms_status'];
+                $notificationsetting->push_notification_status = $item['push_notification_status'];
+                $notificationsetting->module_type = data_get($item,'module_type','all');
+                $notificationsetting->save();
+            }
+        }
+        return true;
+    }
+    public static function getRentalAdminNotificationSetupData()
+    {
+        $data []=[
+            'title' => 'provider_registration',
+            'key' => 'provider_self_registration',
+            'type' => 'admin',
+            'mail_status' => 'active',
+            'sms_status' => 'disable',
+            'push_notification_status' => 'disable',
+            'sub_title' => 'Sent_notification_on_provider_self_registration',
+            'module_type' => 'rental',
+        ];
+        $data []=[
+            'title' => 'provider_withdraw_request',
+            'key' => 'provider_withdraw_request',
+            'type' => 'admin',
+            'mail_status' => 'active',
+            'sms_status' => 'disable',
+            'push_notification_status' => 'disable',
+            'sub_title' => 'Sent_notification_on_provider_withdraw_request',
+            'module_type' => 'rental',
+        ];
+
+        //provider
+        $data []=[
+            'title' => 'provider_registration',
+            'key' => 'provider_registration',
+            'type' => 'provider',
+            'mail_status' => 'active',
+            'sms_status' => 'disable',
+            'push_notification_status' => 'disable',
+            'sub_title' => 'Sent_notification_on_provider_registration',
+            'module_type' => 'rental',
+        ];
+        $data []=[
+            'title' => 'provider_registration_approval',
+            'key' => 'provider_registration_approval',
+            'type' => 'provider',
+            'mail_status' => 'active',
+            'sms_status' => 'disable',
+            'push_notification_status' => 'disable',
+            'sub_title' => 'Sent_notification_on_provider_registration_approval',
+            'module_type' => 'rental',
+        ];
+        $data []=[
+            'title' => 'provider_registration_deny',
+            'key' => 'provider_registration_deny',
+            'type' => 'provider',
+            'mail_status' => 'active',
+            'sms_status' => 'disable',
+            'push_notification_status' => 'disable',
+            'sub_title' => 'Sent_notification_on_provider_registration_deny',
+            'module_type' => 'rental',
+        ];
+        $data []=[
+            'title' => 'provider_account_block',
+            'key' => 'provider_account_block',
+            'type' => 'provider',
+            'mail_status' => 'active',
+            'sms_status' => 'disable',
+            'push_notification_status' => 'active',
+            'sub_title' => 'Sent_notification_on_provider_account_block',
+            'module_type' => 'rental',
+        ];
+        $data []=[
+            'title' => 'provider_account_unblock',
+            'key' => 'provider_account_unblock',
+            'type' => 'provider',
+            'mail_status' => 'active',
+            'sms_status' => 'disable',
+            'push_notification_status' => 'active',
+            'sub_title' => 'Sent_notification_on_provider_account_unblock',
+            'module_type' => 'rental',
+        ];
+        $data []=[
+            'title' => 'provider_withdraw_approve',
+            'key' => 'provider_withdraw_approve',
+            'type' => 'provider',
+            'mail_status' => 'active',
+            'sms_status' => 'disable',
+            'push_notification_status' => 'active',
+            'sub_title' => 'Sent_notification_on_provider_withdraw_approve',
+            'module_type' => 'rental',
+        ];
+        $data []=[
+            'title' => 'provider_withdraw_rejaction',
+            'key' => 'provider_withdraw_rejaction',
+            'type' => 'provider',
+            'mail_status' => 'active',
+            'sms_status' => 'disable',
+            'push_notification_status' => 'active',
+            'sub_title' => 'Sent_notification_on_provider_withdraw_rejaction',
+            'module_type' => 'rental',
+        ];
+        $data []=[
+            'title' => 'provider_trip_notification',
+            'key' => 'provider_trip_notification',
+            'type' => 'provider',
+            'mail_status' => 'disable',
+            'sms_status' => 'disable',
+            'push_notification_status' => 'active',
+            'sub_title' => 'Sent_notification_on_provider_trip_notification',
+            'module_type' => 'rental',
+        ];
+        $data []=[
+            'title' => 'provider_subscription_success',
+            'key' => 'provider_subscription_success',
+            'type' => 'provider',
+            'mail_status' => 'active',
+            'sms_status' => 'disable',
+            'push_notification_status' => 'active',
+            'sub_title' => 'Sent_notification_on_provider_subscription_success',
+            'module_type' => 'rental',
+        ];
+        $data []=[
+            'title' => 'provider_subscription_renew',
+            'key' => 'provider_subscription_renew',
+            'type' => 'provider',
+            'mail_status' => 'active',
+            'sms_status' => 'disable',
+            'push_notification_status' => 'active',
+            'sub_title' => 'Sent_notification_on_provider_subscription_renew',
+            'module_type' => 'rental',
+        ];
+        $data []=[
+            'title' => 'provider_subscription_shift',
+            'key' => 'provider_subscription_shift',
+            'type' => 'provider',
+            'mail_status' => 'active',
+            'sms_status' => 'disable',
+            'push_notification_status' => 'active',
+            'sub_title' => 'Sent_notification_on_provider_subscription_shift',
+            'module_type' => 'rental',
+        ];
+        $data []=[
+            'title' => 'provider_subscription_cancel',
+            'key' => 'provider_subscription_cancel',
+            'type' => 'provider',
+            'mail_status' => 'active',
+            'sms_status' => 'disable',
+            'push_notification_status' => 'active',
+            'sub_title' => 'Sent_notification_on_provider_subscription_cancel',
+            'module_type' => 'rental',
+        ];
+        $data []=[
+            'title' => 'provider_subscription_plan_update',
+            'key' => 'provider_subscription_plan_update',
+            'type' => 'provider',
+            'mail_status' => 'active',
+            'sms_status' => 'disable',
+            'push_notification_status' => 'inactive',
+            'sub_title' => 'Sent_notification_on_provider_subscription_plan_update',
+            'module_type' => 'rental',
+        ];
+
+        //customer
+        $data []=[
+            'title' => 'customer_trip_notification',
+            'key' => 'customer_trip_notification',
+            'type' => 'customer',
+            'mail_status' => 'active',
+            'sms_status' => 'disable',
+            'push_notification_status' => 'active',
+            'sub_title' => 'Sent_notification_on_customer_trip_notification',
+            'module_type' => 'rental',
+        ];
+
+        self::checkAndUpdateAdminNotificationData($data);
+        return true;
+    }
+
+    public static function getRentalStoreNotificationSetupData($id): array
+    {
+        $data []=[
+            'title' => 'provider_account_block',
+            'key' => 'provider_account_block',
+            'store_id' => $id,
+            'mail_status' => 'active',
+            'sms_status' => 'disable',
+            'push_notification_status' => 'active',
+            'sub_title' => 'Sent_notification_on_provider_account_block',
+            'module_type' => 'rental',
+        ];
+        $data []=[
+            'title' => 'provider_account_unblock',
+            'key' => 'provider_account_unblock',
+            'store_id' => $id,
+            'mail_status' => 'active',
+            'sms_status' => 'disable',
+            'push_notification_status' => 'active',
+            'sub_title' => 'Sent_notification_on_provider_account_unblock',
+            'module_type' => 'rental',
+        ];
+        $data []=[
+            'title' => 'provider_withdraw_approve',
+            'key' => 'provider_withdraw_approve',
+            'store_id' => $id,
+            'mail_status' => 'active',
+            'sms_status' => 'disable',
+            'push_notification_status' => 'active',
+            'sub_title' => 'Sent_notification_on_provider_withdraw_approve',
+            'module_type' => 'rental',
+        ];
+        $data []=[
+            'title' => 'provider_withdraw_rejaction',
+            'key' => 'provider_withdraw_rejaction',
+            'store_id' => $id,
+            'mail_status' => 'active',
+            'sms_status' => 'disable',
+            'push_notification_status' => 'active',
+            'sub_title' => 'Sent_notification_on_provider_withdraw_rejaction',
+            'module_type' => 'rental',
+        ];
+        $data []=[
+            'title' => 'provider_trip_notification',
+            'key' => 'provider_trip_notification',
+            'store_id' => $id,
+            'mail_status' => 'disable',
+            'sms_status' => 'disable',
+            'push_notification_status' => 'active',
+            'sub_title' => 'Sent_notification_on_provider_trip_notification',
+            'module_type' => 'rental',
+        ];
+        $data []=[
+            'title' => 'provider_subscription_success',
+            'key' => 'provider_subscription_success',
+            'store_id' => $id,
+            'mail_status' => 'active',
+            'sms_status' => 'disable',
+            'push_notification_status' => 'active',
+            'sub_title' => 'Sent_notification_on_provider_subscription_success',
+            'module_type' => 'rental',
+        ];
+        $data []=[
+            'title' => 'provider_subscription_renew',
+            'key' => 'provider_subscription_renew',
+            'store_id' => $id,
+            'mail_status' => 'active',
+            'sms_status' => 'disable',
+            'push_notification_status' => 'active',
+            'sub_title' => 'Sent_notification_on_provider_subscription_renew',
+            'module_type' => 'rental',
+        ];
+        $data []=[
+            'title' => 'provider_subscription_shift',
+            'key' => 'provider_subscription_shift',
+            'store_id' => $id,
+            'mail_status' => 'active',
+            'sms_status' => 'disable',
+            'push_notification_status' => 'active',
+            'sub_title' => 'Sent_notification_on_provider_subscription_shift',
+            'module_type' => 'rental',
+        ];
+        $data []=[
+            'title' => 'provider_subscription_cancel',
+            'key' => 'provider_subscription_cancel',
+            'store_id' => $id,
+            'mail_status' => 'active',
+            'sms_status' => 'disable',
+            'push_notification_status' => 'active',
+            'sub_title' => 'Sent_notification_on_provider_subscription_cancel',
+            'module_type' => 'rental',
+        ];
+        $data []=[
+            'title' => 'provider_subscription_plan_update',
+            'key' => 'provider_subscription_plan_update',
+            'store_id' => $id,
+            'mail_status' => 'active',
+            'sms_status' => 'disable',
+            'push_notification_status' => 'inactive',
+            'sub_title' => 'Sent_notification_on_provider_subscription_plan_update',
+            'module_type' => 'rental',
+        ];
+
+
+        return $data;
     }
 }

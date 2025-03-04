@@ -44,15 +44,15 @@
                                                     <span class="form-label-secondary text-danger d-flex"
                                                         data-toggle="tooltip" data-placement="right"
                                                         data-original-title="{{ translate('messages.When_a_deliveryman_arrives_for_delivery,_Customers_will_get_a_4-digit_verification_code_on_the_order_details_section_in_the_Customer_App_and_needs_to_provide_the_code_to_the_delivery_man_to_verify_the_order.') }}"><img
-                                                            src="{{ asset('/assets/admin/img/info-circle.svg') }}"
+                                                            src="{{ asset('/public/assets/admin/img/info-circle.svg') }}"
                                                             alt="{{ translate('messages.order_varification_toggle') }}">
                                                     </span>
                                                 </span>
                                                 <input type="checkbox"
                                                        data-id="odc1"
                                                        data-type="toggle"
-                                                       data-image-on="{{ asset('/assets/admin/img/modal/order-delivery-verification-on.png') }}"
-                                                       data-image-off="{{ asset('/assets/admin/img/modal/order-delivery-verification-off.png') }}"
+                                                       data-image-on="{{ asset('/public/assets/admin/img/modal/order-delivery-verification-on.png') }}"
+                                                       data-image-off="{{ asset('/public/assets/admin/img/modal/order-delivery-verification-off.png') }}"
                                                        data-title-on="{{ translate('messages.Want_to_enable') }} <strong>{{ translate('messages.Delivery_Verification?') }}</strong>"
                                                        data-title-off="{{ translate('messages.Want_to_disable') }} <strong>{{ translate('messages.Delivery_Verification?') }}</strong>"
                                                        data-text-on="<p>{{ translate('messages.If you enable this, the Deliveryman has to verify the order during delivery through a 4-digit verification code.') }}</p>"
@@ -82,14 +82,14 @@
                                                     <span class="form-label-secondary text-danger d-flex"
                                                         data-toggle="tooltip" data-placement="right"
                                                         data-original-title="{{ translate('messages.With_this_feature,_customers_can_place_an_order_by_uploading_prescription._Stores_can_enable/disable_this_feature_from_the_store_settings_if_needed.') }}"><img
-                                                            src="{{ asset('/assets/admin/img/info-circle.svg') }}"
+                                                            src="{{ asset('/public/assets/admin/img/info-circle.svg') }}"
                                                             alt="{{ translate('messages.prescription_order_status') }}"> </span>
                                                 </span>
                                                 <input type="checkbox"
                                                        data-id="prescription_order_status"
                                                        data-type="toggle"
-                                                       data-image-on="{{ asset('/assets/admin/img/modal/prescription-on.png') }}"
-                                                       data-image-off="{{ asset('/assets/admin/img/modal/prescription-off.png') }}"
+                                                       data-image-on="{{ asset('/public/assets/admin/img/modal/prescription-on.png') }}"
+                                                       data-image-off="{{ asset('/public/assets/admin/img/modal/prescription-off.png') }}"
                                                        data-title-on="{{ translate('messages.Want_to_enable') }} <strong>{{ translate('messages.Place_Order_by_Prescription?') }}</strong>"
                                                        data-title-off="{{ translate('messages.Want_to_disable') }} <strong>{{ translate('messages.Place_Order_by_Prescription?') }}</strong>"
                                                        data-text-on="<p>{{ translate('messages.If you enable this, customers can place an order by simply uploading their prescriptions in the Pharmacy module from the Customer App or Website. Stores can enable/disable this feature from store settings if needed.') }}</p>"
@@ -118,14 +118,14 @@
                                                     <span class="form-label-secondary text-danger d-flex"
                                                         data-toggle="tooltip" data-placement="right"
                                                         data-original-title="{{ translate('messages.If_you_enable_this_feature,_customers_can_choose_‘Home_Delivery’_and_get_the_product_delivered_to_their_preferred_location.') }}"><img
-                                                            src="{{ asset('/assets/admin/img/info-circle.svg') }}"
+                                                            src="{{ asset('/public/assets/admin/img/info-circle.svg') }}"
                                                             alt="{{ translate('Home Delivery') }}"></span>
                                                 </span>
                                                 <input type="checkbox"
                                                        data-id="home_delivery"
                                                        data-type="toggle"
-                                                       data-image-on="{{ asset('/assets/admin/img/modal/home-delivery-on.png') }}"
-                                                       data-image-off="{{ asset('/assets/admin/img/modal/home-delivery-off.png') }}"
+                                                       data-image-on="{{ asset('/public/assets/admin/img/modal/home-delivery-on.png') }}"
+                                                       data-image-off="{{ asset('/public/assets/admin/img/modal/home-delivery-off.png') }}"
                                                        data-title-on="{{ translate('messages.Want_to_enable') }} <strong>{{ translate('messages.Home_Delivery?') }}</strong>"
                                                        data-title-off="{{ translate('messages.Want_to_disable') }} <strong>{{ translate('messages.Home_Delivery?') }}</strong>"
                                                        data-text-on="<p>{{ translate('messages.If you enable this, customers can use the Home Delivery Option during checkout from the Customer App or Website.') }}</p>"
@@ -153,14 +153,14 @@
                                                     <span class="form-label-secondary text-danger d-flex"
                                                         data-toggle="tooltip" data-placement="right"
                                                         data-original-title="{{ translate('messages.If_you_enable_this_feature,_customers_can_place_an_order_and_request_‘Takeaways’_or_‘self-pick-up’_from_stores.') }}"><img
-                                                            src="{{ asset('/assets/admin/img/info-circle.svg') }}"
+                                                            src="{{ asset('/public/assets/admin/img/info-circle.svg') }}"
                                                             alt="{{ translate('Home Delivery') }}"></span>
                                                 </span>
                                                 <input type="checkbox"
                                                        data-id="take_away"
                                                        data-type="toggle"
-                                                       data-image-on="{{ asset('/assets/admin/img/modal/takeaway-on.png') }}"
-                                                       data-image-off="{{ asset('/assets/admin/img/modal/takeaway-off.png') }}"
+                                                       data-image-on="{{ asset('/public/assets/admin/img/modal/takeaway-on.png') }}"
+                                                       data-image-off="{{ asset('/public/assets/admin/img/modal/takeaway-off.png') }}"
                                                        data-title-on="{{ translate('messages.Want_to_enable') }} <strong>{{ translate('messages.the_Takeaway_feature?') }}</strong>"
                                                        data-title-off="{{ translate('messages.Want_to_disable') }} <strong>{{ translate('messages.the_Takeaway_feature?') }}</strong>"
                                                        data-text-on="<p>{{ translate('messages.If you enable this, customers can use the Takeaway feature during checkout from the Customer App or Website.') }}</p>"
@@ -187,15 +187,15 @@
                                                     <span class="form-label-secondary text-danger d-flex"
                                                         data-toggle="tooltip" data-placement="right"
                                                         data-original-title="{{ translate('messages.With_this_feature,_customers_can_choose_their_preferred_delivery_slot._Customers_can_select_a_delivery_slot_for_ASAP_or_a_specific_date_(within_2_days_from_the_order).')}}"><img
-                                                            src="{{ asset('/assets/admin/img/info-circle.svg') }}"
+                                                            src="{{ asset('/public/assets/admin/img/info-circle.svg') }}"
                                                             alt="{{ translate('messages.customer_varification_toggle') }}">
                                                     </span>
                                                 </span>
                                                 <input type="checkbox"
                                                        data-id="schedule_order"
                                                        data-type="toggle"
-                                                       data-image-on="{{ asset('/assets/admin/img/modal/schedule-on.png') }}"
-                                                       data-image-off="{{ asset('/assets/admin/img/modal/schedule-off.png') }}"
+                                                       data-image-on="{{ asset('/public/assets/admin/img/modal/schedule-on.png') }}"
+                                                       data-image-off="{{ asset('/public/assets/admin/img/modal/schedule-off.png') }}"
                                                        data-title-on="{{ translate('messages.Want_to_enable') }} <strong>{{ translate('messages.Scheduled Order?') }}</strong>"
                                                        data-title-off="{{ translate('messages.Want_to_disable') }} <strong>{{ translate('messages.Scheduled Order?') }}</strong>"
                                                        data-text-on="<p>{{ translate('messages.If you enable this, customers can choose a suitable delivery schedule during checkout.') }}</p>"
@@ -226,7 +226,7 @@
                                                     <span class="form-label-secondary text-danger"
                                                     data-toggle="tooltip" data-placement="right"
                                                     data-original-title="{{ translate('messages.By_activating_this_feature,_customers_can_choose_their_suitable_delivery_slot_according_to_a_30-minute_or_1-hour_interval_set_by_the_Admin.') }}"><img
-                                                        src="{{ asset('/assets/admin/img/info-circle.svg') }}"
+                                                        src="{{ asset('/public/assets/admin/img/info-circle.svg') }}"
                                                         alt="{{ translate('Home Delivery') }}"></span>
                                                 </span>
                                             </label>
@@ -246,13 +246,13 @@
                                     @php($extra_packaging_data =json_decode($extra_packaging_data , true))
                                     <div class="mt-4  mb-4 access_product_approval">
 
-                                        <label class="mb-2 input-label text-capitalize d-flex alig-items-center" for=""> <img src="{{ asset('/assets/admin/img/icon-park_ad-product.png') }}" alt=""
+                                        <label class="mb-2 input-label text-capitalize d-flex alig-items-center" for=""> <img src="{{ asset('/public/assets/admin/img/icon-park_ad-product.png') }}" alt=""
                                             class="card-header-icon align-self-center mr-1">{{ translate('Enable Extra Packaging Charge') }}
 
                                             <span class="form-label-secondary text-danger"
                                             data-toggle="tooltip" data-placement="right"
                                             data-original-title="{{ translate('messages.After_saving_information,_sellers_will_get_the_option_to_offer_extra_packaging_charge_to_the_customer') }}"><img
-                                                src="{{ asset('/assets/admin/img/info-circle.svg') }}"
+                                                src="{{ asset('/public/assets/admin/img/info-circle.svg') }}"
                                                 alt="{{ translate('Extra_Packaging_Charge') }}"></span>
 
                                         </label>
@@ -269,6 +269,82 @@
                                         </div>
                                     </div>
                                 </div>
+
+                                    {{-- @if (addon_published_status('Rental'))
+                                    @php($order_cancelation_rate_limit_status = App\CentralLogics\Helpers::get_business_settings('order_cancelation_rate_limit_status') ?? 0)
+
+                                    <div class="__bg-FAFAFA card shadow-none">
+                                        <div class="card-header bg-transparent">
+                                            <div>
+                                                <h5 class="text-title mb-1">
+                                                    {{ translate('messages.Vendor Cancelation Rate Setup') }}
+                                                </h5>
+                                                <p class="fs-12 mb-0">
+                                                    {{ translate('messages.This section will be applicable for vendors of car rental module') }}
+                                                </p>
+                                            </div>
+                                            <div class="col-lg-4 col-md-6">
+                                                <div class="form-group mb-0">
+                                                    <label
+                                                        class="toggle-switch h--45px toggle-switch-sm d-flex justify-content-between border rounded px-3 py-0 form-control">
+                                                        <span class="pr-1 d-flex align-items-center switch--label text--title">
+
+                                                        </span>
+                                                        <input type="checkbox" data-id="order_cancelation_rate_limit_status" data-type="toggle"
+                                                            data-image-on="{{ asset('/public/assets/admin/img/modal/dm-tips-on.png') }}"
+                                                            data-image-off="{{ asset('/public/assets/admin/img/modal/dm-tips-off.png') }}"
+                                                            data-title-on="<strong>{{ translate('messages.Want_to_enable_provider_cancelation_rate?') }}</strong>"
+                                                            data-title-off="<strong>{{ translate('messages.Want_to_disable_provider_cancelation_rate?') }}</strong>"
+                                                            data-text-on="<p>{{ translate('messages.If_you_enable_this,_provider_cancelation_rate_will_be_enabled.') }}</p>"
+                                                            data-text-off="<p>{{ translate('messages.If_you_disable_this,_provider_cancelation_rate_will_be_disabled.') }}</p>"
+                                                            class="status toggle-switch-input dynamic-checkbox-toggle" value="1"
+                                                            name="order_cancelation_rate_limit_status" id="order_cancelation_rate_limit_status"
+                                                            {{  $order_cancelation_rate_limit_status ? 'checked' : '' }}>
+                                                        <span class="toggle-switch-label text">
+                                                            <span class="toggle-switch-indicator"></span>
+                                                        </span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col-lg-6">
+                                                    @php($order_cancelation_rate_block_limit =  App\CentralLogics\Helpers::get_business_settings('order_cancelation_rate_block_limit') ?? 0)
+                                                    <div class="form-group mb-0">
+                                                        <label class="input-label font-medium" for="order_cancelation_rate_block_limit">
+                                                            {{ translate('messages.Cancelation Rate Limit') }} (%)
+                                                            <span class="form-label-secondary" data-toggle="tooltip" data-placement="right"
+                                                                data-original-title="{{ translate('messages.Cancelation Rate Limit') }}">
+                                                                <i class="tio-info-outined text--title"></i>
+                                                            </span>
+                                                        </label>
+                                                        <input type="number" max="100" min="0" id="order_cancelation_rate_block_limit" name="order_cancelation_rate_block_limit" class="form-control"  {{  $order_cancelation_rate_limit_status ? 'required' : 'readonly' }}  placeholder="{{ translate('Ex: 25') }}" value="{{ $order_cancelation_rate_block_limit }}">
+                                                    </div>
+                                                </div>
+
+                                                @php($order_cancelation_rate_warning_limit =  App\CentralLogics\Helpers::get_business_settings('order_cancelation_rate_warning_limit') ?? 0)
+
+                                                <div class="col-lg-6">
+                                                    <div class="form-group mb-0">
+                                                        <label class="input-label font-medium" for="order_cancelation_rate_warning_limit">
+                                                            {{ translate('messages.Cancelation Rate Warning') }} (%)
+                                                            <span class="form-label-secondary" data-toggle="tooltip" data-placement="right"
+                                                                data-original-title="{{ translate('messages.Cancelation Rate Warning') }}">
+                                                                <i class="tio-info-outined text--title"></i>
+                                                            </span>
+                                                        </label>
+                                                        <input type="number" {{  $order_cancelation_rate_limit_status ? 'required' : 'readonly' }} min="0" max="100" value="{{ $order_cancelation_rate_warning_limit }}" name="order_cancelation_rate_warning_limit" id="order_cancelation_rate_warning_limit" class="form-control" placeholder="{{ translate('Ex: 20') }}">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    @endif --}}
+
+
+
                                 <div class="btn--container justify-content-end mt-3">
                                     <button type="reset" class="btn btn--reset">{{ translate('messages.reset') }}</button>
                                     <button type="{{ env('APP_MODE') != 'demo' ? 'submit' : 'button' }}"
@@ -332,7 +408,7 @@
                                     <span class="form-label-secondary text-danger d-flex" data-toggle="tooltip"
                                         data-placement="right"
                                         data-original-title="{{ translate('When this field is active, user can cancel an order with proper reason.') }}"><img
-                                            src="{{ asset('/assets/admin/img/info-circle.svg') }}"
+                                            src="{{ asset('/public/assets/admin/img/info-circle.svg') }}"
                                             alt="{{ translate('messages.prescription_order_status') }}"></span>
                                 </label>
                                 <select id="user_type" name="user_type" class="form-control h--45px" required>

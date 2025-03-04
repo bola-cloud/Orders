@@ -5,9 +5,9 @@ $company_name = App\Models\BusinessSetting::where('key', 'business_name')->first
     <tbody>
         <tr>
             <td class="main-table-td">
-                <img class="mail-img-1 onerror-image" data-onerror-image="{{ asset('/assets/admin/img/blank1.png') }}"
+                <img class="mail-img-1 onerror-image" data-onerror-image="{{ asset('/public/assets/admin/img/blank1.png') }}"
 
-                src="{{ $data['logo_full_url'] ?? asset('/assets/admin/img/blank1.png') }}"
+                src="{{ $data['logo_full_url'] ?? asset('/public/assets/admin/img/blank1.png') }}"
 
                 id="logoViewer" alt="">
                 <h2 id="mail-title" class="mt-2">{{ $data['title']?? translate('Main_Title_or_Subject_of_the_Mail') }}</h2>

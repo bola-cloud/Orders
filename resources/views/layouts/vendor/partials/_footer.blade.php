@@ -1,3 +1,7 @@
+@php
+    $vendorData = \App\CentralLogics\Helpers::get_store_data();
+    $title = $vendorData?->module_type == 'rental' && addon_published_status('Rental') ? 'Provider' : 'Store';
+@endphp
 <div class="footer">
     <div class="row justify-content-between align-items-center">
         <div class="col">
@@ -11,7 +15,7 @@
                 <!-- List Dot -->
                 <ul class="list-inline list-separator">
                     <li class="list-inline-item">
-                        <a class="list-separator-link" href="{{route('vendor.business-settings.store-setup')}}">{{translate('messages.store_settings')}}</a>
+                        <a class="list-separator-link" href="{{route('vendor.business-settings.store-setup')}}">{{translate('messages.'.$title.'_settings')}}</a>
                     </li>
 
                     <li class="list-inline-item">

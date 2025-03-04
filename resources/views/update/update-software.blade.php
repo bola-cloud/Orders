@@ -49,7 +49,7 @@
                                     <div
                                         class="d-flex align-items-center gap-2 justify-content-between flex-grow-1">
                                         PHP Version 8.1 +
-    
+
                                         @php($phpVersion = number_format((float)phpversion(), 2, '.', ''))
                                         @if ($phpVersion >= 8.1)
                                             <img width="20"
@@ -67,7 +67,7 @@
                                                         class="svg text-danger" alt="">
                                                 </span>
                                         @endif
-    
+
                                     </div>
                                 </div>
                             </div>

@@ -85,7 +85,7 @@
                     <div class="color-card color-2">
                         <div class="img-box">
                             <img class="resturant-icon w--30"
-                                src="{{ asset('/assets/admin/img/icons/color-icon-2.png') }}" alt="transactions">
+                                src="{{ asset('/public/assets/admin/img/icons/color-icon-2.png') }}" alt="transactions">
                         </div>
                         <div>
                             <h2 class="title">
@@ -103,7 +103,7 @@
                     <div class="color-card color-3">
                         <div class="img-box">
                             <img class="resturant-icon w--30"
-                                src="{{ asset('/assets/admin/img/icons/color-icon-3.png') }}" alt="transactions">
+                                src="{{ asset('/public/assets/admin/img/icons/color-icon-3.png') }}" alt="transactions">
                         </div>
                         <div>
                             <h2 class="title">
@@ -131,7 +131,7 @@
                             <div class="color-card color-4">
                                 <div class="img-box">
                                     <img class="resturant-icon w--30"
-                                        src="{{ asset('/assets/admin/img/icons/group.png') }}"
+                                        src="{{ asset('/public/assets/admin/img/icons/group.png') }}"
                                         alt="transactions">
                                 </div>
                                 <div>
@@ -149,7 +149,7 @@
                             <div class="color-card color-4">
                                 <div class="img-box">
                                     <img class="resturant-icon w--30"
-                                        src="{{ asset('/assets/admin/img/icons/color-icon-4.png') }}"
+                                        src="{{ asset('/public/assets/admin/img/icons/color-icon-4.png') }}"
                                         alt="transactions">
                                 </div>
                                 <div>
@@ -167,7 +167,7 @@
                             <div class="color-card color-4">
                                 <div class="img-box">
                                     <img class="resturant-icon w--30"
-                                        src="{{ asset('/assets/admin/img/icons/group.png') }}"
+                                        src="{{ asset('/public/assets/admin/img/icons/group.png') }}"
                                         alt="transactions">
                                 </div>
                                 <div>
@@ -187,7 +187,7 @@
                         <div class="color-card color-5">
                             <div class="img-box">
                                 <img class="resturant-icon w--30"
-                                    src="{{ asset('/assets/admin/img/icons/color-icon-5.png') }}"
+                                    src="{{ asset('/public/assets/admin/img/icons/color-icon-5.png') }}"
                                     alt="transactions">
                             </div>
                             <div>
@@ -205,7 +205,7 @@
                         <div class="color-card color-6">
                             <div class="img-box">
                                 <img class="resturant-icon w--30"
-                                    src="{{ asset('/assets/admin/img/icons/color-icon-6.png') }}"
+                                    src="{{ asset('/public/assets/admin/img/icons/color-icon-6.png') }}"
                                     alt="transactions">
                             </div>
                             <div>
@@ -531,7 +531,7 @@
                                 <button class="btn" data-toggle="modal" data-target="#image-{{ $key }}">
                                     <div class="gallary-card">
                                         <img class="rounded mx-h150 mx-w-100"
-                                            data-onerror-image="{{ asset('/assets/admin/img/900x400/img1.jpg') }}"
+                                            data-onerror-image="{{ asset('/public/assets/admin/img/900x400/img1.jpg') }}"
                                             src="{{ $img }}"
                                             width="275" height="150" alt="">
                                     </div>
@@ -548,7 +548,7 @@
                                                         class="sr-only">{{ translate('messages.Close') }}</span></button>
                                             </div>
                                             <div class="modal-body">
-                                                <img data-onerror-image="{{ asset('/assets/admin/img/900x400/img1.jpg') }}"
+                                                <img data-onerror-image="{{ asset('/public/assets/admin/img/900x400/img1.jpg') }}"
                                                 src="{{ $img }}"
                                                     class="w-100 onerror-image">
                                             </div>
@@ -699,7 +699,7 @@
                 </div>
                 @if (count($reviews) === 0)
                     <div class="empty--data">
-                        <img src="{{ asset('/assets/admin/svg/illustrations/sorry.svg') }}" alt="public">
+                        <img src="{{ asset('/public/assets/admin/svg/illustrations/sorry.svg') }}" alt="public">
                         <h5>
                             {{ translate('no_data_found') }}
                         </h5>
@@ -796,7 +796,7 @@
                 </div>
                 @if (count($reviews) === 0)
                     <div class="empty--data">
-                        <img src="{{ asset('/assets/admin/svg/illustrations/sorry.svg') }}" alt="public">
+                        <img src="{{ asset('/public/assets/admin/svg/illustrations/sorry.svg') }}" alt="public">
                         <h5>
                             {{ translate('no_data_found') }}
                         </h5>

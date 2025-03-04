@@ -170,8 +170,8 @@
                             enctype="multipart/form-data" class="col-12">
                             @csrf
                             <div class="row">
-                            @if (config('toggle_veg_non_veg') && config('module.'.$store->module->module_type)['veg_non_veg'])
-                                <div class="col-sm-6 col-lg-4">
+                                @if ($toggle_veg_non_veg && config('module.'.$store->module->module_type)['veg_non_veg'])
+                                    <div class="col-sm-6 col-lg-4">
                                         <div class="form-group">
                                             <label class="form-label">{{translate('store_type')}}<span class="input-label-secondary" data-toggle="tooltip" data-placement="right" data-original-title="{{translate('Define_the_food_type_this_store_can_sell.')}}"><img src="{{asset('/assets/admin/img/info-circle.svg')}}" alt="{{translate('messages.scheduled_order_hint')}}"></span></label>
                                             <div class="resturant-type-group border rounded px-3 d-flex flex-wrap min--h-45px">

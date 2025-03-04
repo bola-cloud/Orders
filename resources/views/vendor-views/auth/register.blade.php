@@ -1,5 +1,5 @@
 @extends('layouts.landing.app')
-@section('title', translate('messages.store_registration'))
+@section('title', translate('messages.vendor_registration'))
 @push('css_or_js')
     <link rel="stylesheet" href="{{ asset('assets/admin/css/toastr.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/admin/css/view-pages/vendor-registration.css') }}">
@@ -10,7 +10,7 @@
         <div class="container">
             <!-- Page Header -->
             <div class="section-header">
-                <h2 class="title mb-2">{{ translate('messages.store') }} <span class="text--base">{{translate('application')}}</span></h2>
+                <h2 class="title mb-2">{{ translate('messages.vendor') }} <span class="text--base">{{translate('application')}}</span></h2>
             </div>
             @php($language=\App\Models\BusinessSetting::where('key','language')->first())
             @php($language = $language->value ?? null)
@@ -66,7 +66,7 @@
                                     fill="#000000" data-original="#000000"></path>
                             </g>
                         </g>
-                    </svg> {{ translate('messages.store_info') }}
+                    </svg> {{ translate('messages.vendor_info') }}
                 </h5>
             </div>
             <div class="card-body p-4">
@@ -93,7 +93,7 @@
                                         ({{ translate('messages.Default') }})
                                     </label>
                                     <input type="text" name="name[]" id="default_name" class="form-control __form-control"
-                                        placeholder="{{ translate('messages.store_name') }}" required>
+                                        placeholder="{{ translate('messages.vendor_name') }}" required>
                                 </div>
                             </div>
                             <input type="hidden" name="lang[]" value="default">
@@ -116,7 +116,7 @@
                                     </label>
                                     <input type="text" name="name[]" id="{{ $lang }}_name"
                                         class="form-control __form-control"
-                                        placeholder="{{ translate('messages.store_name') }}">
+                                        placeholder="{{ translate('messages.vendor_name') }}">
                                 </div>
                             </div>
                             <input type="hidden" name="lang[]" value="{{ $lang }}">
@@ -137,7 +137,7 @@
                             <label class="input-label" for="choice_zones">{{ translate('messages.zone') }} <span
                                     class="form-label-secondary" data-toggle="tooltip" data-placement="right"
                                     data-original-title="{{ translate('messages.select_zone_for_map') }}"><img
-                                        src="{{ asset('/assets/admin/img/info-circle.svg') }}"
+                                        src="{{ asset('/public/assets/admin/img/info-circle.svg') }}"
                                         alt="{{ translate('messages.select_zone_for_map') }}"></span></label>
                             <select name="zone_id" id="choice_zones" required
                                 class="form-control __form-control js-select2-custom js-example-basic-single"
@@ -164,9 +164,9 @@
                         <div class="form-group mb-4">
                             <label class="input-label" for="latitude">{{ translate('messages.latitude') }} <span
                                     class="input-label-secondary"
-                                    title="{{ translate('messages.store_lat_lng_warning') }}"><img
-                                        src="{{ asset('/assets/admin/img/info-circle.svg') }}"
-                                        alt="{{ translate('messages.store_lat_lng_warning') }}"></span></label>
+                                    title="{{ translate('messages.vendor_lat_lng_warning') }}"><img
+                                        src="{{ asset('/public/assets/admin/img/info-circle.svg') }}"
+                                        alt="{{ translate('messages.vendor_lat_lng_warning') }}"></span></label>
                             <input type="text" id="latitude" name="latitude" class="form-control __form-control"
                                 placeholder="{{ translate('messages.Ex:') }} -94.22213" value="{{ old('latitude') }}"
                                 required readonly>
@@ -174,9 +174,9 @@
                         <div class="form-group">
                             <label class="input-label" for="longitude">{{ translate('messages.longitude') }} <span
                                     class="input-label-secondary"
-                                    title="{{ translate('messages.store_lat_lng_warning') }}"><img
-                                        src="{{ asset('/assets/admin/img/info-circle.svg') }}"
-                                        alt="{{ translate('messages.store_lat_lng_warning') }}"></span></label>
+                                    title="{{ translate('messages.vendor_lat_lng_warning') }}"><img
+                                        src="{{ asset('/public/assets/admin/img/info-circle.svg') }}"
+                                        alt="{{ translate('messages.vendor_lat_lng_warning') }}"></span></label>
                             <input type="text" name="longitude" class="form-control __form-control"
                                 placeholder="{{ translate('messages.Ex:') }} 103.344322" id="longitude"
                                 value="{{ old('longitude') }}" required readonly>
@@ -229,14 +229,14 @@
                                         <div class="icon-file">
                                             <input type="file" name="cover_photo" id="coverImageUpload"
                                             class="form-control __form-control"
-                                            accept=".jpg, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*">
+                                            accept=".webp, .jpg, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*">
                                             <img src="{{ asset('assets/admin/img/pen.png') }}" alt="">
                                         </div>
                                     </div>
                                 </label>
                             </div>
                             <div class="form-group w-140px d-flex flex-column justify-content-between">
-                                <label class="input-label pt-2">{{ translate('messages.store_logo') }}<small class="text-danger">
+                                <label class="input-label pt-2">{{ translate('messages.vendor_logo') }}<small class="text-danger">
                                         * (
                                         {{ translate('messages.ratio') }}
                                         1:1
@@ -248,7 +248,7 @@
                                     <div class="icon-file-group">
                                         <div class="icon-file">
                                             <input type="file" name="logo" id="customFileEg1" class="form-control __form-control"
-                                            accept=".jpg, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*" required>
+                                            accept=".webp, .jpg, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*" required>
                                             <img src="{{ asset('assets/admin/img/pen.png') }}" alt="">
                                         </div>
                                     </div>
@@ -519,7 +519,7 @@
             $(document).ready(function() {
                 $('#module_id').select2({
                     ajax: {
-                        url: '{{url('/')}}/store/get-all-modules/',
+                        url: '{{url('/')}}/vendor/get-all-modules/',
                         data: function (params) {
                             return {
                                 q: params.term, // search term

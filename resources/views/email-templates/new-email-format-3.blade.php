@@ -222,7 +222,7 @@ width: 24px;
                                 <td class="p-10">
                                     <span class="d-block text-center">
                                         <img class="mb-2 mail-img-2"
-                                        src="{{ $data['logo_full_url'] ?? asset('/assets/admin/img/blank1.png') }}"
+                                        src="{{ $data['logo_full_url'] ?? asset('/public/assets/admin/img/blank1.png') }}"
 
                                         alt="">
                                         <h3 class="mb-3 mt-0">{{ translate('Order_Info') }}</h3>
@@ -421,6 +421,18 @@ width: 24px;
                                                                         <td class="text-right p-1 px-3">{{ \App\CentralLogics\Helpers::format_currency($order->delivery_charge) }}</td>
                                                                     </tr>
                                                                     @endif
+
+                                                                    <tr>
+                                                                        <td style="width: 40%"></td>
+                                                                        <td class="p-1 px-3">
+                                                                            {{ \App\CentralLogics\Helpers::get_business_data('additional_charge_name')??\App\CentralLogics\Helpers::get_business_data('additional_charge_name')??translate('messages.additional_charge') }}
+                                                                        </td>
+                                                                        <td class="text-right p-1 px-3">
+                                                                            {{ \App\CentralLogics\Helpers::format_currency($order->additional_charge?? 0) }}
+                                                                        </td>
+                                                                    </tr>
+
+
                                                                     <tr>
                                                                         <td style="width: 40%"></td>
                                                                         <td class="p-1 px-3">

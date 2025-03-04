@@ -9,7 +9,7 @@
         <div class="chat-user-info-img d-none d-md-block">
             <img class="avatar-img onerror-image"
 
-            src="{{ $user['image_full_url'] }}" 
+            src="{{ $user['image_full_url'] }}"
                     data-onerror-image="{{asset('assets/admin')}}/img/160x160/img1.jpg"
                     alt="Image Description">
         </div>

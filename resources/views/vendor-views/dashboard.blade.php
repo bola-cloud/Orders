@@ -26,7 +26,7 @@
                     @if (isset($out_of_stock_count) &&   $out_of_stock_count  > 1 )
                             <div class="alert __alert-4 m-0 py-1 px-2  max-w-450px hide-warning d-none" role="alert">
                                 <div class="alert-inner">
-                                    <img class="rounded mr-1"  width="25" src="{{ asset('/assets/admin/img/invalid-icon.png') }}" alt="">
+                                    <img class="rounded mr-1"  width="25" src="{{ asset('/public/assets/admin/img/invalid-icon.png') }}" alt="">
                                     <div class="cont">
                                         <h4 class="mb-2">{{ translate('Warning!') }} </h4>{{  ( $out_of_stock_count -1).'+ '.  translate('more_products_are_low_on_Stock.') }}
                                         <br>
@@ -41,7 +41,7 @@
                             @elseif (isset($out_of_stock_count)  &&  $out_of_stock_count  == 1  && isset($item))
                             <div class="alert __alert-4 m-0 py-1 px-2  max-w-450px hide-warning d-none" role="alert">
                                 <div class="alert-inner">
-                                    <img class="aspect-1-1 mr-1 object--contain rounded" width="100" src="{{ $item?->image_full_url ?? asset('/assets/admin/img/100x100/food-default-image.png') }}" alt="">
+                                    <img class="aspect-1-1 mr-1 object--contain rounded" width="100" src="{{ $item?->image_full_url ?? asset('/public/assets/admin/img/100x100/food-default-image.png') }}" alt="">
                                     <div class="cont">
                                         <h4 class="mb-2">{{ $item?->name }} </h4>{{  translate('This product is low stock.') }}
                                         <br>

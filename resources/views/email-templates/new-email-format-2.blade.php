@@ -148,7 +148,7 @@ width: 24px;
             <tr>
                 <td class="main-table-td">
                     <img class="mail-img-1"
-                    src="{{ $data['logo_full_url'] ?? asset('/assets/admin/img/blank1.png') }}"
+                    src="{{ $data['logo_full_url'] ?? asset('/public/assets/admin/img/blank1.png') }}"
                     id="logoViewer" alt="">
 
                     <h2 id="mail-title" class="mt-2">{{ $title?? translate('Main_Title_or_Subject_of_the_Mail') }}</h2>

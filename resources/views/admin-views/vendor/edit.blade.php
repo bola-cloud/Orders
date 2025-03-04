@@ -149,7 +149,7 @@
                                             <div class="icon-file">
                                                 <i class="tio-edit"></i>
                                         <input type="file" name="logo" id="customFileEg1" class="custom-file-input"
-                                        accept=".jpg, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*" required>
+                                        accept=".webp, .jpg, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*" required>
                                             </div>
                                         </div>
                                     </label>
@@ -170,7 +170,7 @@
                                             <div class="icon-file">
                                                 <i class="tio-edit"></i>
                                                 <input type="file" name="cover_photo" id="coverImageUpload"  class="custom-file-input"
-                                                    accept=".jpg, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*">
+                                                    accept=".webp, .jpg, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*">
                                             </div>
                                         </div>
                                     </label>
@@ -254,17 +254,25 @@
                                         </select>
                                     </div>
                                     <div class="form-group">
-                                        <label class="input-label" for="latitude">{{translate('messages.latitude')}}<span
+                                        <label class="input-label" for="latitude">{{translate('messages.latitude')}}
+                                            <span
                                                 class="form-label-secondary" data-toggle="tooltip" data-placement="right"
-        data-original-title="{{translate('messages.store_lat_lng_warning')}}"><img src="{{asset('/assets/admin/img/info-circle.svg')}}" alt="{{translate('messages.store_lat_lng_warning')}}"></span></label>
+                                                data-original-title="{{translate('messages.store_lat_lng_warning')}}">
+                                                <img src="{{asset('/assets/admin/img/info-circle.svg')}}" alt="{{translate('messages.store_lat_lng_warning')}}">
+                                            </span>
+                                        </label>
                                         <input type="text" id="latitude"
                                                 name="latitude" class="form-control"
                                                 placeholder="{{ translate('messages.Ex:') }} -94.22213" value="{{$store->latitude}}" required readonly>
                                     </div>
                                     <div class="form-group mb-5">
-                                        <label class="input-label" for="longitude">{{translate('messages.longitude')}}<span
+                                        <label class="input-label" for="longitude">{{translate('messages.longitude')}}
+                                            <span
                                                 class="form-label-secondary" data-toggle="tooltip" data-placement="right"
-        data-original-title="{{translate('messages.store_lat_lng_warning')}}"><img src="{{asset('/assets/admin/img/info-circle.svg')}}" alt="{{translate('messages.store_lat_lng_warning')}}"></span></label>
+                                                data-original-title="{{translate('messages.store_lat_lng_warning')}}">
+                                                <img src="{{asset('/assets/admin/img/info-circle.svg')}}" alt="{{translate('messages.store_lat_lng_warning')}}">
+                                            </span>
+                                        </label>
                                         <input type="text"
                                                 name="longitude" class="form-control"
                                                 placeholder="{{ translate('messages.Ex:') }} 103.344322" id="longitude" value="{{$store->longitude}}" required readonly>
@@ -647,7 +655,7 @@
 
     $('#module_id').select2({
             ajax: {
-                 url: '{{url('/')}}/store/get-all-modules',
+                 url: '{{url('/')}}/vendor/get-all-modules',
                 data: function (params) {
                     return {
                         q: params.term, // search term

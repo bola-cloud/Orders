@@ -6,6 +6,13 @@
 @endpush
 
 @section('content')
+    @php
+        $vendorData = \App\CentralLogics\Helpers::get_store_data();
+        $vendor = $vendorData?->module_type;
+        $title = $vendor == 'rental' ? 'Provider' : 'Store';
+        $orderOrTrip = $vendor == 'rental' ? 'trip' : 'order';
+        $type = $vendor == 'rental' ? 'vehicle' : 'item';
+    @endphp
     <div class="content container-fluid">
         <!-- Page Header -->
         <div class="page-header">
@@ -18,7 +25,7 @@
                 </span>
             </h1>
             <div class="__page-header-txt mt-3">
-                {{ translate('This report will show all the orders in which the store discount has been used. The store discounts are: Free delivery, Coupon discount & item discounts(partial according to order commission).') }}
+                {{ translate('This report will show all the '.$orderOrTrip.' in which the '.$title.' discount has been used. The '.$title.' discounts are: Free delivery, Coupon discount & '.$type.' discounts(partial according to '.$orderOrTrip.' commission).') }}
             </div>
 
         </div>
@@ -128,7 +135,11 @@
                         <thead class="thead-light white--space-false">
                             <tr>
                                 <th >{{translate('sl')}}</th>
+                                @if($module_type == 'rental')
+                                <th class="text-center" >{{translate('trip_id')}}</th>
+                                @else
                                 <th class="text-center" >{{translate('messages.order_id')}}</th>
+                                @endif
                                 <th class="text-center" >{{translate('Date & Time')}}</th>
                                 <th class="text-center" >{{ translate('Expense Type') }}</th>
                                 <th class="text-center" >{{ translate('Customer Name') }}</th>
@@ -143,13 +154,23 @@
                             @foreach ($expense as $key => $exp)
                             <tr>
                                 <td scope="row">{{$key+$expense->firstItem()}}</td>
-                                <td class="text-center" >
-                                        @if (isset($exp['order_id']))
-                                        <a href="{{route('vendor.order.details',['id'=>$exp['order_id']])}}">{{$exp['order_id']}}</a>
+                                @if($module_type == 'rental')
+                                    <td class="text-center" >
+                                        @if (isset($exp['trip_id']))
+                                            <a href="{{route('vendor.trip.details',['id'=>$exp['trip_id']])}}">{{$exp['trip_id']}}</a>
                                         @else
-                                        <label class="badge badge-danger">{{translate('messages.invalid_order_data')}}</label>
+                                            <label class="badge badge-danger">{{translate('messages.invalid_trip_data')}}</label>
                                         @endif
-                                </td>
+                                    </td>
+                                @else
+                                    <td class="text-center" >
+                                        @if (isset($exp['order_id']))
+                                            <a href="{{route('vendor.order.details',['id'=>$exp['order_id']])}}">{{$exp['order_id']}}</a>
+                                        @else
+                                            <label class="badge badge-danger">{{translate('messages.invalid_order_data')}}</label>
+                                        @endif
+                                    </td>
+                                @endif
                                 <td class="text-center">
                                     {{date('Y-m-d '.config('timeformat'),strtotime($exp->created_at))}}
                                 </td>
@@ -160,10 +181,10 @@
 
 
                                     <td class="text-center">
-                                    @if (isset($exp->order->customer))
-                                    {{ $exp->order->customer->f_name.' '.$exp->order->customer->l_name }}
-                                    @elseif($exp->order->is_guest)
-                                        @php($customer_details = json_decode($exp->order['delivery_address'],true))
+                                    @if (isset($exp?->order?->customer))
+                                    {{ $exp?->order?->fullName }}
+                                    @elseif($exp?->order?->is_guest)
+                                        @php($customer_details = json_decode($exp?->order['delivery_address'],true))
                                         {{$customer_details['contact_person_name']}}
                                     @else
                                     <label class="badge badge-danger">{{translate('messages.invalid_customer_data')}}</label>

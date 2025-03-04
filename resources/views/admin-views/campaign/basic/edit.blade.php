@@ -98,7 +98,7 @@
                     <div class="row g-3">
                         <div class="col-lg-6">
                             <div class="row g-3">
-                        
+
                                 <div class="col-sm-6">
                                     <div>
                                         <label class="input-label" for="title">{{translate('messages.start_date')}}</label>
@@ -136,7 +136,7 @@
                                 </div>
                                 <div class="custom-file">
                                     <input type="file" name="image" id="customFileEg1" class="custom-file-input"
-                                           accept=".jpg, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*">
+                                           accept=".webp, .jpg, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*">
                                     <label class="custom-file-label" for="customFileEg1">{{translate('messages.choose_file')}}</label>
                                 </div>
                             </div>

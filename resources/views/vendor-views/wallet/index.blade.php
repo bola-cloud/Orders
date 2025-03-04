@@ -1,10 +1,10 @@
+@php
+    $vendorData = \App\CentralLogics\Helpers::get_store_data();
+    $title = $vendorData?->module_type == 'rental' && addon_published_status('Rental') ? 'Provider' : 'Store';
+@endphp
+
 @extends('layouts.vendor.app')
-
-@section('title',translate('messages.store_wallet'))
-
-@push('css_or_js')
-
-@endpush
+@section('title', translate('messages.' . $title . '_wallet'))
 
 @section('content')
     <div class="content container-fluid">
@@ -17,7 +17,7 @@
                             <img src="{{asset('/assets/admin/img/image_90.png')}}" alt="public">
                         </div>
                         <span>
-                            {{translate('messages.store_wallet')}}
+                            {{translate('messages.' . $title . '_wallet')}}
                         </span>
                     </h2>
                 </div>

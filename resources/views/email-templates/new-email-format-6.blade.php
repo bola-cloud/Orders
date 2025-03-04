@@ -169,7 +169,7 @@ width: 24px;
                 <td class="main-table-td">
                     <div class="text-center">
                     <img class="mail-img-2"
-                    src="{{ $data['icon_full_url'] ?? asset('/assets/admin/img/blank3.png') }}"
+                    src="{{ $data['icon_full_url'] ?? asset('/public/assets/admin/img/blank3.png') }}"
 
 
                     id="iconViewer" alt="">

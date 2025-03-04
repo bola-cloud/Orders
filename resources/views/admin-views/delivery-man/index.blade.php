@@ -148,7 +148,7 @@
                                 </div>
                                 <div class="custom-file">
                                     <input type="file" name="image" id="customFileEg1" class="custom-file-input"
-                                        accept=".jpg, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*" required>
+                                        accept=".webp, .jpg, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*" required>
                                     <label class="custom-file-label"
                                         for="customFileEg1">{{ translate('messages.choose_file') }}</label>
                                 </div>
@@ -197,7 +197,7 @@
                                     <span
                                         class="form-label-secondary" data-toggle="tooltip" data-placement="right"
                                         data-original-title="{{ translate('messages.Max_5_Identity_Images') }}"><img
-                                            src="{{ asset('/assets/admin/img/info-circle.svg') }}"
+                                            src="{{ asset('/public/assets/admin/img/info-circle.svg') }}"
                                             alt="{{ translate('messages.Max_5_Identity_Images') }}"></span>
 
                                     <span
@@ -243,7 +243,7 @@
                                     for="signupSrPassword">{{ translate('messages.password') }}<span
                                         class="form-label-secondary" data-toggle="tooltip" data-placement="right"
                                         data-original-title="{{ translate('messages.Must_contain_at_least_one_number_and_one_uppercase_and_lowercase_letter_and_symbol,_and_at_least_8_or_more_characters') }}"><img
-                                            src="{{ asset('/assets/admin/img/info-circle.svg') }}"
+                                            src="{{ asset('/public/assets/admin/img/info-circle.svg') }}"
                                             alt="{{ translate('messages.Must_contain_at_least_one_number_and_one_uppercase_and_lowercase_letter_and_symbol,_and_at_least_8_or_more_characters') }}"></span> <span
                                             class="form-label-secondary text-danger" data-toggle="tooltip"
                                             data-placement="right"

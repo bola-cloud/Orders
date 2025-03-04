@@ -363,7 +363,7 @@ class ItemController extends Controller
 
     public function view($id)
     {
-        $product = Item::withoutGlobalScope(StoreScope::class)->where(['id' => $id])->first();
+        $product = Item::withoutGlobalScope(StoreScope::class)->where(['id' => $id])->firstOrFail();
         $reviews = Review::where(['item_id' => $id])->latest()->paginate(config('default_pagination'));
         return view('admin-views.product.view', compact('product', 'reviews'));
     }
@@ -1266,11 +1266,15 @@ class ItemController extends Controller
                         return back();
                     }
                     if (isset($collection['Price']) && ($collection['Price'] < 0)) {
-                        Toastr::error(translate('messages.Price_must_be_greater_then_0') . ' ' . $collection['Id']);
+                        Toastr::error(translate('messages.Price_must_be_greater_then_0_on_id') . ' ' . $collection['Id']);
                         return back();
                     }
                     if (isset($collection['Discount']) && ($collection['Discount'] < 0)) {
-                        Toastr::error(translate('messages.Discount_must_be_greater_then_0') . ' ' . $collection['Id']);
+                        Toastr::error(translate('messages.Discount_must_be_greater_then_0_on_id') . ' ' . $collection['Id']);
+                        return back();
+                    }
+                    if (data_get($collection,'Image') != "" &&  strlen(data_get($collection,'Image')) > 30 ) {
+                        Toastr::error(translate('messages.Image_name_must_be_in_30_char._on_id') . ' ' . $collection['Id']);
                         return back();
                     }
                     try {
@@ -1315,7 +1319,7 @@ class ItemController extends Controller
                 }
             }catch(\Exception $e){
                 info(["line___{$e->getLine()}",$e->getMessage()]);
-                Toastr::error(translate('messages.failed_to_import_data'));
+                Toastr::error($e->getMessage());
                 return back();
             }
             try {
@@ -1333,7 +1337,7 @@ class ItemController extends Controller
             } catch (\Exception $e) {
                 DB::rollBack();
                 info(["line___{$e->getLine()}", $e->getMessage()]);
-                Toastr::error(translate('messages.failed_to_import_data'));
+                Toastr::error($e->getMessage());
                 return back();
             }
             Toastr::success(translate('messages.product_imported_successfully', ['count' => count($data)]));
@@ -1356,6 +1360,10 @@ class ItemController extends Controller
                     }
                     if (isset($collection['Discount']) && ($collection['Discount'] > 100)) {
                         Toastr::error(translate('messages.Discount_must_be_less_then_100') . ' ' . $collection['Id']);
+                        return back();
+                    }
+                    if (data_get($collection,'Image') != "" &&  strlen(data_get($collection,'Image')) > 30 ) {
+                        Toastr::error(translate('messages.Image_name_must_be_in_30_char_on_id') . ' ' . $collection['Id']);
                         return back();
                     }
                     try {
@@ -1405,7 +1413,7 @@ class ItemController extends Controller
                 }
             }catch(\Exception $e){
                 info(["line___{$e->getLine()}",$e->getMessage()]);
-                Toastr::error(translate('messages.failed_to_import_data'));
+                Toastr::error($e->getMessage());
                 return back();
             }
         try {
@@ -1428,7 +1436,7 @@ class ItemController extends Controller
         } catch (\Exception $e) {
             DB::rollBack();
             info(["line___{$e->getLine()}", $e->getMessage()]);
-            Toastr::error(translate('messages.failed_to_import_data'));
+            Toastr::error($e->getMessage());
             return back();
         }
         Toastr::success(translate('messages.product_imported_successfully', ['count' => count($data)]));
@@ -1950,6 +1958,12 @@ class ItemController extends Controller
 
         if($item->module->module_type == 'pharmacy'){
             DB::table('pharmacy_item_details')->where('temp_product_id' , $data->id)->update([
+                'item_id' => $item->id,
+                'temp_product_id' => null
+                ]);
+        }
+        if($item->module->module_type == 'ecommerce'){
+            DB::table('ecommerce_item_details')->where('temp_product_id' , $data->id)->update([
                 'item_id' => $item->id,
                 'temp_product_id' => null
                 ]);

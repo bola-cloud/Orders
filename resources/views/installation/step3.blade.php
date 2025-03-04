@@ -95,7 +95,7 @@
                                     <div class="input-inner-end-ele position-relative">
                                         <input type="password" id="database-password" min="8"
                                                autocomplete="new-password" class="form-control" name="DB_PASSWORD"
-                                               
+
                                                placeholder="Ex: password">
                                         <div class="togglePassword">
                                             <img

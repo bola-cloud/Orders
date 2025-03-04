@@ -5,7 +5,7 @@
     <td>
         <a class="media align-items-center" href="{{route('admin.item.view',[$food['id']])}}">
             <img class="avatar avatar-lg mr-3 onerror-image"
-            src="{{ $food['image'] ?? asset('assets/admin/img/160x160/img2.jpg') }}" 
+            src="{{ $food['image'] ?? asset('assets/admin/img/160x160/img2.jpg') }}"
             data-onerror-image="{{asset('assets/admin/img/160x160/img2.jpg')}}" alt="{{$food->name}} image">
             <div class="media-body">
                 <h5 class="text-hover-primary mb-0">{{Str::limit($food['name'],20,'...')}}</h5>

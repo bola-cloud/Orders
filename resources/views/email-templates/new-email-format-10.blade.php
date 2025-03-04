@@ -149,7 +149,7 @@
             <tr>
                 <td class="main-table-td">
                     <img class="mail-img-1"  id="iconViewer"
-                    src="{{ $data['icon_full_url'] ?? asset('/assets/admin/img/blank3.png') }}"
+                    src="{{ $data['icon_full_url'] ?? asset('/public/assets/admin/img/blank3.png') }}"
                     alt="image">
 
 
@@ -157,7 +157,7 @@
                     <div class="mb-1" id="mail-body">{!! $body?? translate('Hi_Sabrina,') !!}</div>
 
                     <img class="mb-2 mail-img-3" id="bannerViewer"
-                    src="{{ $data['image_full_url'] ?? asset('/assets/admin/img/blank2.png') }}"
+                    src="{{ $data['image_full_url'] ?? asset('/public/assets/admin/img/blank2.png') }}"
                     alt="image">
 
                     @if ($data?->button_url)

@@ -811,7 +811,7 @@
 
 
     <!-- ==== Earn Money Section Starts Here ==== -->
-    <section class="earn-money-section">
+    <section class="earn-money-section z-2">
         <div class="container">
             <div class="section-header wow fadeInUp">
                 <h2 class="title">
@@ -827,7 +827,7 @@
             <div class="earn-item wow fadeInUp">
                 <div class="earn-item-img"
                     style="background: url({{ \App\CentralLogics\Helpers::get_full_url('earning', isset($landing_data['earning_seller_image']) ? $landing_data['earning_seller_image'] : null, isset($landing_data['earning_seller_image_storage']) ? $landing_data['earning_seller_image_storage'] : 'public') }}) no-repeat center center / cover;">
-                    <div class="position-relative dropdown text-capitalize">
+                    <div class="position-relative dropdown text-capitalize z-2">
 
 
 
@@ -848,13 +848,13 @@
                             <div class="dropdown-menu dropdown-menu-end p-0">
                                 <a href="{{ isset($join_as_seller['playstore_url']) ? $join_as_seller['playstore_url'] : '' }}"
                                     class="dropdown-item">
-                                    <img src="{{ asset('assets/landing/img/google-play.png') }}"
+                                    <img src="{{ asset('/public/assets/landing/img/google-play.png') }}"
                                         alt="">
                                     {{ translate('google_play') }}
                                 </a>
                                 <a href="{{ isset($join_as_seller['apple_store_url']) ? $join_as_seller['apple_store_url'] : '' }}"
                                     class="dropdown-item">
-                                    <img src="{{ asset('assets/landing/img/apple-store.png') }}"
+                                    <img src="{{ asset('/public/assets/landing/img/apple-store.png') }}"
                                         alt="">
                                     {{ translate('apple_store') }}
                                 </a>
@@ -896,7 +896,7 @@
             <div class="earn-item wow fadeInUp">
                 <div class="earn-item-img"
                     style="background: url({{ \App\CentralLogics\Helpers::get_full_url('earning', isset($landing_data['earning_delivery_image']) ? $landing_data['earning_delivery_image'] : null, isset($landing_data['earning_delivery_image_storage']) ? $landing_data['earning_delivery_image_storage'] : 'public') }}) no-repeat center center / cover;">
-                    <div class="position-relative dropdown text-capitalize">
+                    <div class="position-relative dropdown text-capitalize z-2">
 
                         @if (isset($join_as_dm['playstore_url_status']) &&
                                 $join_as_dm['playstore_url_status'] == '1' &&
@@ -915,14 +915,14 @@
                             <div class="dropdown-menu p-0">
                                 <a href="{{ isset($join_as_dm['playstore_url']) ? $join_as_dm['playstore_url'] : '' }}"
                                     class="dropdown-item">
-                                    <img src="{{ asset('/assets/landing/img/google-play.png') }}"
+                                    <img src="{{ asset('/public/assets/landing/img/google-play.png') }}"
                                         alt="">
                                     {{ translate('google_play') }}
                                 </a>
 
                                 <a href="{{ isset($join_as_dm['apple_store_url']) ? $join_as_dm['apple_store_url'] : '' }}"
                                     class="dropdown-item">
-                                    <img src="{{ asset('/assets/landing/img/apple-store.png') }}"
+                                    <img src="{{ asset('/public/assets/landing/img/apple-store.png') }}"
                                         alt="">
                                     {{ translate('apple_store') }}
                                 </a>
@@ -1745,7 +1745,7 @@
     @if (isset($counter) && $counter['status'] == '1')
         <section class="counter-section  mb--186px">
             <div class="container">
-                <div class="counter-wrapper">
+                <div class="counter-wrapper position-relative">
                     <div class="contact-wrapper-inner">
                         <div class="left-side">
                             <div class="counter-item wow fadeInUp">
@@ -1917,14 +1917,14 @@
                                 <div class="dropdown-menu p-0 w-75 w-sm-50">
                                     @if (isset($landing_page_links['playstore_url_status']) && $landing_page_links['playstore_url_status'] == '1')
                                         <a href="{{ $landing_page_links['playstore_url'] }}" class="dropdown-item">
-                                            <img src="{{ asset('/assets/landing/img/google-play.png') }}"
+                                            <img src="{{ asset('/public/assets/landing/img/google-play.png') }}"
                                                 alt="">
                                             {{ translate('google_play') }}
                                         </a>
                                     @endif
                                     @if (isset($landing_page_links['apple_store_url_status']) && $landing_page_links['apple_store_url_status'] == '1')
                                         <a href="{{ $landing_page_links['apple_store_url'] }}" class="dropdown-item">
-                                            <img src="{{ asset('/assets/landing/img/apple-store.png') }}"
+                                            <img src="{{ asset('/public/assets/landing/img/apple-store.png') }}"
                                                 alt="">
                                             {{ translate('apple_store') }}
                                         </a>
@@ -2077,7 +2077,7 @@
                     </div>
                     <div class="modal-body px-sm-5 pb-5">
                         <div class="text-center">
-                            <img src="{{ asset('/assets/landing/img/welcome.svg') }}" class="mw-100 mb-3"
+                            <img src="{{ asset('/public/assets/landing/img/welcome.svg') }}" class="mw-100 mb-3"
                                 alt="">
                             <h5 class="mb-3">{{ translate('Welcome_to') }} {{ $business_name }}!</h5>
                             <p class="m-0 mb-4">
