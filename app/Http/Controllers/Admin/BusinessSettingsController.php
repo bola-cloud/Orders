@@ -823,13 +823,18 @@ class BusinessSettingsController extends Controller
         $desiredName = 'payment_setup';
         $payment_url = '';
 
-        foreach ($routes as $routeArray) {
-            foreach ($routeArray as $route) {
-                if ($route['name'] === $desiredName) {
-                    $payment_url = $route['url'];
-                    break 2;
+        if (is_array($routes)) { // Ensure $routes is an array
+            foreach ($routes as $routeArray) {
+                foreach ($routeArray as $route) {
+                    if ($route['name'] === $desiredName) {
+                        $payment_url = $route['url'];
+                        break 2;
+                    }
                 }
             }
+        } else {
+            // Log or handle the missing configuration
+            error_log('addon_admin_routes configuration is not defined or not an array.');
         }
         $data_values = Setting::whereIn('settings_type', ['payment_config'])->whereIn('key_name', ['ssl_commerz', 'paypal', 'stripe', 'razor_pay', 'senang_pay', 'paytabs', 'paystack', 'paymob_accept', 'paytm', 'flutterwave', 'liqpay', 'bkash', 'mercadopago'])->get();
 
